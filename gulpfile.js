@@ -12,7 +12,7 @@ var jade = require('gulp-jade');
 var paths = {
   sass: ['./src/scss/**/*.scss'],
   coffee: ['./src/coffee/**/*.coffee'],
-  jade: ['./src/**/*.jade']
+  jade: ['./src/jade/**/*.jade']
 };
 
 gulp.task('default', ['sass', 'coffee', 'jade']);
