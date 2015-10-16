@@ -6,15 +6,19 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var coffee = require('gulp-coffee');
+var jade = require('gulp-jade');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./src/scss/**/*.scss'],
+  coffee: ['./src/coffee/**/*.coffee'],
+  jade: ['./src/**/*.jade']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['sass', 'coffee', 'jade']);
 
 gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
+  gulp.src('./src/scss/ionic.app.scss')
     .pipe(sass())
     .on('error', sass.logError)
     .pipe(gulp.dest('./www/css/'))
@@ -26,8 +30,24 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
+gulp.task('coffee', function(done) {
+  gulp.src(paths.coffee)
+    .pipe(coffee().on('error', gutil.log))
+    .pipe(gulp.dest('./www/js/'))
+    .on('end', done);
+});
+
+gulp.task('jade', function(done) {
+  gulp.src(paths.jade)
+    .pipe(jade({"pretty": true}))
+    .pipe(gulp.dest('./www/'))
+    .on('end', done);
+});
+
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.coffee, ['coffee']);
+  gulp.watch(paths.jade, ['jade']);
 });
 
 gulp.task('install', ['git-check'], function() {
