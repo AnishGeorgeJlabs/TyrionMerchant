@@ -9,6 +9,7 @@ html
 
     link(href='lib/ionic/css/ionic.css' rel='stylesheet')
     script(src='lib/ionic/js/ionic.bundle.js')
+    script(src='custom_lib/md5.js')
 
     link(href='css/ionic.app.css' rel='stylesheet')
 
@@ -20,6 +21,10 @@ html
     - var controllers = ['login', 'newOrders', 'currentOrders', 'pastOrders', 'orderDetails']
     each file in controllers
       script(src='js/controllers/'+file+'.js')
+
+    - var services = ['core', 'utilities']
+    each file in services
+      script(src='js/services/'+file+'.js')
 
   body(ng-app="app" animation="slide-left-right-ios7")
     div

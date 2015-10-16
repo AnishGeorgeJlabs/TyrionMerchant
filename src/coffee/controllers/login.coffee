@@ -1,2 +1,6 @@
 angular.module 'app.controllers', []
-.controller 'loginCtrl', ($scope) ->
+.controller 'loginCtrl', ($scope, tyUserCreds) ->
+  $scope.data =
+    username: ''
+    password: ''
+
