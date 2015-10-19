@@ -5,6 +5,6 @@ angular.module('app.controllers')
   else
     $scope.main_css = "lib/bootstrap/dist/css/bootstrap.min.css"
 )
-.controller('DeviceCtrl', ($scope, agIsPhone) ->
+.controller('DeviceCtrl', ($scope, agIsPhone, agHttp, tyApiEndpoints, $log) ->
   $scope.isPhone = agIsPhone
 )

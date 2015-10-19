@@ -19,7 +19,7 @@ angular.module 'app.services', []
     }
 )
 
-.factory('tyUserCreds', (tyApiEndpoints, agEncPass, agHttp, $q) ->
+.factory('tyUserCreds', (tyApiEndpoints, agEncPass, agHttp, $q, $log) ->
   username = ''
   return {
     username: () -> username

@@ -12,10 +12,11 @@ html(ng-app='app')
     each file in jsFiles
       script(src='lib/'+file+'.js')
     //script(src='lib/ionic/js/ionic.bundle.js')
-    script(src='custom_lib/md5.js')
+    //script(src='custom_lib/md5.js')
+    script(src='http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js')
 
     //link(href='css/ionic.app.css' rel='stylesheet')
-    link(ng-href='{{main_css}}' rel='stylesheet')
+    link(ng-href='{{::main_css}}' rel='stylesheet')
 
     // Other app javascript here in a minute
     - var coreJs = ['app', 'config']

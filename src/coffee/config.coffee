@@ -8,7 +8,7 @@ angular.module 'app.config', []
     base_dir = "templates_desk/"
 
   $stateProvider
-  .state('tabsController',
+  .state('tabs',
     url: '/tab'
     abstract: true
     templateUrl: 'templates_phone/tabsController.html'
@@ -20,7 +20,7 @@ angular.module 'app.config', []
     controller: 'loginCtrl'
   )
 
-  .state('tabsController.newOrders',
+  .state('tabs.new',
     url: '/new'
     views:
       'tab1':
@@ -28,7 +28,7 @@ angular.module 'app.config', []
         controller: 'newOrdersCtrl'
   )
 
-  .state('tabsController.currentOrders',
+  .state('tabs.current',
     url: '/current'
     views:
       'tab2':
@@ -36,7 +36,7 @@ angular.module 'app.config', []
         controller: 'currentOrdersCtrl'
   )
 
-  .state('tabsController.pastOrders',
+  .state('tabs.past',
     url: '/past'
     views:
       'tab3':
