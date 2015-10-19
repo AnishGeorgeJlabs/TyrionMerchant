@@ -11,7 +11,7 @@ angular.module 'app.config', []
   .state('tabs',
     url: '/tab'
     abstract: true
-    templateUrl: 'templates_phone/tabsController.html'
+    templateUrl: base_dir + 'tabsController.html'
   )
 
   .state('login',
@@ -24,7 +24,7 @@ angular.module 'app.config', []
     url: '/new'
     views:
       'tab1':
-        templateUrl: 'templates_phone/newOrders.html'
+        templateUrl: base_dir + 'newOrders.html'
         controller: 'newOrdersCtrl'
   )
 
@@ -32,7 +32,7 @@ angular.module 'app.config', []
     url: '/current'
     views:
       'tab2':
-        templateUrl: 'templates_phone/currentOrders.html'
+        templateUrl: base_dir + 'currentOrders.html'
         controller: 'currentOrdersCtrl'
   )
 
@@ -40,13 +40,13 @@ angular.module 'app.config', []
     url: '/past'
     views:
       'tab3':
-        templateUrl: 'templates_phone/pastOrders.html',
+        templateUrl: base_dir + 'pastOrders.html',
         controller: 'pastOrdersCtrl'
   )
 
   .state('orderDetails',
     url: '/details'
-    templateUrl: 'templates_phone/orderDetails.html'
+    templateUrl: base_dir + 'orderDetails.html'
     controller: 'orderDetailsCtrl'
   )
 

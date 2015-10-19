@@ -1,0 +1,14 @@
+.row
+  .col-xs-12.col-md-3.bg-faded
+    ul.nav.nav-pills.nav-stacked
+      li.nav-item
+        a.nav-link(ui-sref='tabs.new') New orders
+      li.nav-item
+        a.nav-link(ui-sref='tabs.current') Current orders
+      li.nav-item
+        a.nav-link(ui-sref='tabs.past') Past orders
+  .col-xs-12.col-md-9
+    ui-view(name='tab1')
+    ui-view(name='tab2')
+    ui-view(name='tab3')
+    ui-view(name='tab4')
