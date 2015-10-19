@@ -11,6 +11,7 @@ var jade = require('gulp-jade');
 
 var paths = {
   sass: ['./src/scss/**/*.scss'],
+  main_sass: ['./src/scss/ionic.app.scss', './src/scss/app_bootstrap.scss'],
   coffee: ['./src/coffee/**/*.coffee'],
   jade: ['./src/jade/**/*.jade']
 };
@@ -18,7 +19,7 @@ var paths = {
 gulp.task('default', ['sass', 'coffee', 'jade']);
 
 gulp.task('sass', function(done) {
-  gulp.src('./src/scss/ionic.app.scss')
+  gulp.src(paths.main_sass)
     .pipe(sass())
     .on('error', sass.logError)
     .pipe(gulp.dest('./www/css/'))
