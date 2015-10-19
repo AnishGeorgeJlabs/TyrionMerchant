@@ -7,7 +7,7 @@ html(ng-app='app')
          )
     title Tyrion Merchants
 
-    link(href='lib/ionic/css/ionic.css' rel='stylesheet')
+    //link(href='lib/ionic/css/ionic.css' rel='stylesheet')
     - var jsFiles = ['ionic/js/ionic.bundle', 'underscore/underscore-min']
     each file in jsFiles
       script(src='lib/'+file+'.js')
@@ -32,7 +32,10 @@ html(ng-app='app')
 
   body(animation="slide-left-right-ios7" ng-controller='DeviceCtrl')
     div
-      div
-        ion-nav-bar.bar-stable(ng-if='isPhone()')
+      div(ng-if='isPhone()')
+        ion-nav-bar.bar-stable
           ion-nav-back-button.button-icon.icon.ion-ios-arrow-back Back
         ion-nav-view
+      div(ng-if='!isPhone()')
+        .container-fluid
+          ion-nav-view
