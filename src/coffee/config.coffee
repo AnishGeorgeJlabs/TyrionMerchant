@@ -1,16 +1,22 @@
 angular.module 'app.config', []
 .config(($stateProvider, $urlRouterProvider, $ionicConfigProvider) ->
   $ionicConfigProvider.tabs.position('bottom')
+
+  if _.contains(['android', 'ios', 'windowsphone'], ionic.Platform.platform())
+    base_dir = "templates_phone/"
+  else
+    base_dir = "templates_desk/"
+
   $stateProvider
   .state('tabsController',
     url: '/tab'
     abstract: true
-    templateUrl: 'templates/tabsController.html'
+    templateUrl: 'templates_phone/tabsController.html'
   )
 
   .state('login',
     url: '/login'
-    templateUrl: 'templates/login.html'
+    templateUrl: base_dir + 'login.html'
     controller: 'loginCtrl'
   )
 
@@ -18,7 +24,7 @@ angular.module 'app.config', []
     url: '/new'
     views:
       'tab1':
-        templateUrl: 'templates/newOrders.html'
+        templateUrl: 'templates_phone/newOrders.html'
         controller: 'newOrdersCtrl'
   )
 
@@ -26,7 +32,7 @@ angular.module 'app.config', []
     url: '/current'
     views:
       'tab2':
-        templateUrl: 'templates/currentOrders.html'
+        templateUrl: 'templates_phone/currentOrders.html'
         controller: 'currentOrdersCtrl'
   )
 
@@ -34,13 +40,13 @@ angular.module 'app.config', []
     url: '/past'
     views:
       'tab3':
-        templateUrl: 'templates/pastOrders.html',
+        templateUrl: 'templates_phone/pastOrders.html',
         controller: 'pastOrdersCtrl'
   )
 
   .state('orderDetails',
     url: '/details'
-    templateUrl: 'templates/orderDetails.html'
+    templateUrl: 'templates_phone/orderDetails.html'
     controller: 'orderDetailsCtrl'
   )
 

@@ -1,4 +1,10 @@
 angular.module('app.controllers')
 .controller('HeadCtrl', ($scope, $log, agIsPhone) ->
-  $log.info "in a phone? #{agIsPhone()}"
+  if agIsPhone()
+    $scope.main_css = "css/ionic.app.min.css"
+  else
+    $scope.main_css = "lib/bootstrap/dist/css/bootstrap.min.css"
+)
+.controller('DeviceCtrl', ($scope, agIsPhone) ->
+  $scope.isPhone = agIsPhone
 )

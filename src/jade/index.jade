@@ -14,7 +14,8 @@ html(ng-app='app')
     //script(src='lib/ionic/js/ionic.bundle.js')
     script(src='custom_lib/md5.js')
 
-    link(href='css/ionic.app.css' rel='stylesheet')
+    //link(href='css/ionic.app.css' rel='stylesheet')
+    link(ng-href='{{main_css}}' rel='stylesheet')
 
     // Other app javascript here in a minute
     - var coreJs = ['app', 'config']
@@ -29,9 +30,9 @@ html(ng-app='app')
     each file in services
       script(src='js/services/'+file+'.js')
 
-  body(animation="slide-left-right-ios7")
+  body(animation="slide-left-right-ios7" ng-controller='DeviceCtrl')
     div
       div
-        ion-nav-bar.bar-stable
+        ion-nav-bar.bar-stable(ng-if='isPhone()')
           ion-nav-back-button.button-icon.icon.ion-ios-arrow-back Back
         ion-nav-view
