@@ -29,3 +29,7 @@ angular.module 'app.services'
     $http.post url, data
   }
 )
+.factory('agIsPhone', () ->
+  () ->
+    _.contains(['android', 'ios', 'windowsphone'], ionic.Platform.platform())
+)

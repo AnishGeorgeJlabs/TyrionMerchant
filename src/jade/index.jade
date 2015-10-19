@@ -1,6 +1,6 @@
 doctype html
-html
-  head
+html(ng-app='app')
+  head(ng-controller='HeadCtrl')
     meta(charset='utf-8')
     meta(name="viewport"
          content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"
@@ -8,7 +8,10 @@ html
     title Tyrion Merchants
 
     link(href='lib/ionic/css/ionic.css' rel='stylesheet')
-    script(src='lib/ionic/js/ionic.bundle.js')
+    - var jsFiles = ['ionic/js/ionic.bundle', 'underscore/underscore-min']
+    each file in jsFiles
+      script(src='lib/'+file+'.js')
+    //script(src='lib/ionic/js/ionic.bundle.js')
     script(src='custom_lib/md5.js')
 
     link(href='css/ionic.app.css' rel='stylesheet')
@@ -18,7 +21,7 @@ html
     each file in coreJs
       script(src='js/'+file+'.js')
 
-    - var controllers = ['login', 'newOrders', 'currentOrders', 'pastOrders', 'orderDetails']
+    - var controllers = ['login', 'newOrders', 'currentOrders', 'pastOrders', 'orderDetails', 'head']
     each file in controllers
       script(src='js/controllers/'+file+'.js')
 
@@ -26,7 +29,7 @@ html
     each file in services
       script(src='js/services/'+file+'.js')
 
-  body(ng-app="app" animation="slide-left-right-ios7")
+  body(animation="slide-left-right-ios7")
     div
       div
         ion-nav-bar.bar-stable
