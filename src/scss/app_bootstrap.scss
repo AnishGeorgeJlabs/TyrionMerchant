@@ -1,1 +1,12 @@
 /* Boostrap specific css */
+body {
+  padding-top: 54px;
+}
+
+.section-title {
+  padding-top: 20px;
+  text-align: center;
+  hr {
+    margin-top: 0px;
+  }
+}

@@ -1,13 +1,16 @@
-.row
-  .col-xs-12.col-md-3.bg-faded
-    ul.nav.nav-pills.nav-stacked
-      li.nav-item
+nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
+  // TODO, get the brand stuff along
+  .container
+    a.navbar-brand Tyrion Merchant
+    ul.nav.navbar-nav
+      li.nav-item(ng-class="{'active': stateCheck('tabs.new')}")
         a.nav-link(ui-sref='tabs.new') New orders
-      li.nav-item
+      li.nav-item(ng-class="{'active': stateCheck('tabs.current')}")
         a.nav-link(ui-sref='tabs.current') Current orders
-      li.nav-item
+      li.nav-item(ng-class="{'active': stateCheck('tabs.past')}")
         a.nav-link(ui-sref='tabs.past') Past orders
-  .col-xs-12.col-md-8
+.row
+  .col-xs-12
     ui-view(name='new_tab')
     ui-view(name='cur_tab')
     ui-view(name='pas_tab')
