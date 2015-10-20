@@ -9,8 +9,7 @@ nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
         a.nav-link(ui-sref='tabs.current') Current orders
       li.nav-item(ng-class="{'active': stateCheck('tabs.past')}")
         a.nav-link(ui-sref='tabs.past') Past orders
-.row
-  .col-xs-12
-    ui-view(name='new_tab')
-    ui-view(name='cur_tab')
-    ui-view(name='pas_tab')
+.row.full-screen
+  ui-view(name='new_tab')
+  ui-view(name='cur_tab')
+  ui-view(name='pas_tab')
