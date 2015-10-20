@@ -23,7 +23,7 @@ angular.module 'app.config', []
   .state('tabs.new',
     url: '/new'
     views:
-      'tab1':
+      new_tab:
         templateUrl: base_dir + 'newOrders.html'
         controller: 'newOrdersCtrl'
   )
@@ -31,7 +31,7 @@ angular.module 'app.config', []
   .state('tabs.current',
     url: '/current'
     views:
-      'tab2':
+      cur_tab:
         templateUrl: base_dir + 'currentOrders.html'
         controller: 'currentOrdersCtrl'
   )
@@ -39,12 +39,46 @@ angular.module 'app.config', []
   .state('tabs.past',
     url: '/past'
     views:
-      'tab3':
+      pas_tab:
         templateUrl: base_dir + 'pastOrders.html',
         controller: 'pastOrdersCtrl'
   )
 
-  .state('orderDetails',
+  # ---------------------------- Phone based details view ------------------------------------------------------------ #
+  .state('tabs.new-details',
+    url: '/details'
+    views:
+      new_tab:
+        templateUrl: base_dir + 'orderDetails.html'
+        controller: 'orderDetailsCtrl'
+  )
+  .state('tabs.current-details',
+    url: '/details'
+    views:
+      cur_tab:
+        templateUrl: base_dir + 'orderDetails.html'
+        controller: 'orderDetailsCtrl'
+  )
+  .state('tabs.past-details',
+    url: '/details'
+    views:
+      pas_tab:
+        templateUrl: base_dir + 'orderDetails.html'
+        controller: 'orderDetailsCtrl'
+  )
+
+  # ---------------------------- Web based details View -------------------------------------------------------------- #
+  .state('tabs.new.details',
+    url: '/details'
+    templateUrl: base_dir + 'orderDetails.html'
+    controller: 'orderDetailsCtrl'
+  )
+  .state('tabs.current.details',
+    url: '/details'
+    templateUrl: base_dir + 'orderDetails.html'
+    controller: 'orderDetailsCtrl'
+  )
+  .state('tabs.past.details',
     url: '/details'
     templateUrl: base_dir + 'orderDetails.html'
     controller: 'orderDetailsCtrl'

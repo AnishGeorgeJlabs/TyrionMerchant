@@ -7,8 +7,7 @@
         a.nav-link(ui-sref='tabs.current') Current orders
       li.nav-item
         a.nav-link(ui-sref='tabs.past') Past orders
-  .col-xs-12.col-md-9
-    ui-view(name='tab1')
-    ui-view(name='tab2')
-    ui-view(name='tab3')
-    ui-view(name='tab4')
+  .col-xs-12.col-md-8
+    ui-view(name='new_tab')
+    ui-view(name='cur_tab')
+    ui-view(name='pas_tab')
