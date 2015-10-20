@@ -19,14 +19,14 @@ angular.module 'app.services', []
     }
 )
 
-.factory('tyUserCreds', (tyApiEndpoints, agEncPass, agHttp, $q, $log) ->
+.factory('tyUserCreds', (tyApiEndpoints, agEncPass, agHttp, $q, $log, $rootScope) ->
   username = ''
   return {
     username: () -> username
     isLoggedIn: () -> Boolean(username)
     logout: () ->
       username = ''
-      agHttp.setApiCreds({api_key: '', vendor_id: 0})
+      agHttp.setApiCreds('', 0)
     login: (user, password) ->
       pass = agEncPass(password)
       result = $q.defer()
@@ -37,7 +37,8 @@ angular.module 'app.services', []
       ).success((d) ->
         if d.success
           username = user
-          agHttp.setApiCreds(d.data)
+          agHttp.setApiCreds(d.data.api_key, d.data.vendor_id)
+          $rootScope.$emit("app:logged_in", _.pick(d.data, 'name', 'address'))
           result.resolve(username)
         else
           result.reject(d.reason || d.error)

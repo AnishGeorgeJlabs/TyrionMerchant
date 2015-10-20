@@ -9,9 +9,9 @@ angular.module 'app.services'
     vendor_id: 0
   }
   return {
-  setApiCreds: (obj) ->
-    apiCreds.api_key = obj.api_key
-    apiCreds.vendor_id = obj.vendor_id
+  setApiCreds: (api_key, vendor_id) ->
+    apiCreds.api_key = api_key
+    apiCreds.vendor_id = vendor_id
     $log.debug "We have api creds: #{JSON.stringify(apiCreds)}"
 
   get: (url, params) ->

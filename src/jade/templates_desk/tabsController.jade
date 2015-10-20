@@ -1,7 +1,7 @@
 nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
   // TODO, get the brand stuff along
   .container
-    a.navbar-brand Tyrion Merchant
+    a.navbar-brand {{ merchant_name }}
     ul.nav.navbar-nav
       li.nav-item(ng-class="{'active': stateCheck('tabs.new')}")
         a.nav-link(ui-sref='tabs.new') New orders

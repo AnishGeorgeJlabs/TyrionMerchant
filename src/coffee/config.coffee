@@ -1,6 +1,7 @@
-angular.module 'app.config', []
-.config(($stateProvider, $urlRouterProvider, $ionicConfigProvider) ->
+angular.module 'app.config', ['app.services']
+.config(($stateProvider, $urlRouterProvider, $ionicConfigProvider, tyApiEndpointsProvider) ->
   $ionicConfigProvider.tabs.position('bottom')
+  tyApiEndpointsProvider.useLocalHost(true)
 
   if _.contains(['android', 'ios', 'windowsphone'], ionic.Platform.platform())
     base_dir = "templates_phone/"
