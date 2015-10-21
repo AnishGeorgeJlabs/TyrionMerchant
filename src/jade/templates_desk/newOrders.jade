@@ -4,6 +4,11 @@
       h3 orders
       hr
     .order-list-content
+      order-card(ng-repeat='order in orders'
+        details-state='"tabs.new.details"'
+        show-accept='true'
+        show-cancel='true'
+        order='order')
       //
         p.
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis tellus fermentum, ullamcorper metus viverra, porttitor ante. Duis eget orci augue. Donec eu euismod nisl. Etiam hendrerit est at posuere faucibus. Duis quis euismod magna. Nam diam elit, lacinia ac mattis in, fringilla venenatis risus. Aenean id ipsum quam. Phasellus sit amet nulla fermentum, fringilla felis nec, vestibulum lorem. Aenean suscipit eros in lacus blandit mollis. Nam lacinia ipsum at velit facilisis, vel dapibus erat feugiat. Maecenas commodo quam non ante fermentum, eu sagittis quam rhoncus. Morbi sed maximus neque, sit amet finibus quam. Mauris eget odio condimentum, euismod nulla quis, pellentesque orci.

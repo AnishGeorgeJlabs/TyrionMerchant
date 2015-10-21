@@ -16,6 +16,9 @@ angular.module 'app.services', []
     echo: host
     login: host + "login"
     menu: host + "menu"
+    order_list: host + "order_list"
+    order_details: host + "order_data"
+    status_update: host + "order_data/update_status"
     }
 )
 
@@ -44,5 +47,15 @@ angular.module 'app.services', []
           result.reject(d.reason || d.error)
       )
       return result.promise
+  }
+)
+.factory('tyOrderOps', (tyApiEndpoints, agHttp) ->
+  return {
+    update_status: (order_number, status) ->
+      agHttp.post(tyApiEndpoints.status_update, { status: status, order_number: order_number })
+    order_list: (status) ->
+      agHttp.get(tyApiEndpoints.order_list, { status: status })
+    order_details: (order_number) ->
+      agHttp.get(tyApiEndpoints.order_details, { order_number: order_number })
   }
 )

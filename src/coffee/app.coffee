@@ -1,4 +1,4 @@
-angular.module 'app', ['ionic', 'app.controllers', 'app.config', 'app.services']
+angular.module 'app', ['ionic', 'app.controllers', 'app.config', 'app.services', 'app.directives']
 .run(($ionicPlatform) ->
   $ionicPlatform.ready( () ->
     if window.cordova and window.cordova.plugins.Keyboard

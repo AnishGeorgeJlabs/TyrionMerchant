@@ -28,6 +28,10 @@ html(ng-app='app')
     each file in services
       script(src='js/services/'+file+'.js')
 
+    - var directives = ['orderCard']
+    each file in directives
+      script(src='js/directives/'+file+'.js')
+
   body(animation="slide-left-right-ios7" ng-controller='DeviceCtrl')
     div(ng-if='isPhone()')
       ion-nav-bar.bar-stable

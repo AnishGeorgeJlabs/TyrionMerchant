@@ -5,8 +5,8 @@ angular.module 'app.services'
 )
 .factory('agHttp', ($http, $log) ->
   apiCreds = {
-    api_key: ''
-    vendor_id: 0
+    api_key: '5620e86c2be5104ae1902dc0'   # TODO, only for testing purposes
+    vendor_id: 1
   }
   return {
   setApiCreds: (api_key, vendor_id) ->
