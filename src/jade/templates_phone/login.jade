@@ -9,4 +9,6 @@ ion-view(title="Login")
           span.input-label Password
           input(type='password' ng-model='data.password' required)
       #loginPageSpacer.spacer
-      button.button.button-stable.button-block(type='submit') Log in
+      button.button.button-stable.button-block(type='submit' ng-disabled='loading') Log in
+    .text-center
+      ion-spinner(ng-if='loading' icon='lines')

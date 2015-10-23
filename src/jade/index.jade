@@ -14,6 +14,7 @@ html(ng-app='app')
     script(src='custom_lib/md5.js')
 
     link(ng-href='{{::sheet}}' rel='stylesheet' ng-repeat='sheet in style_sheets')
+    script(ng-src='{{::script}}' ng-repeat='script in scripts')
 
     // Other app javascript here in a minute
     - var coreJs = ['app', 'config']
