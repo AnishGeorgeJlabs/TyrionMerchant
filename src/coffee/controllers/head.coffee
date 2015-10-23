@@ -6,6 +6,7 @@ angular.module('app.controllers')
   else
     $scope.style_sheets = [ "lib/bootstrap/dist/css/bootstrap.min.css", "css/app_bootstrap.min.css", 'lib/toastr/toastr.min.css']
     $scope.scripts = ['lib/toastr/toastr.min.js']
+  $scope.isPhone = $window.isPhone
 )
 .controller('DeviceCtrl', ($scope, $state, $rootScope, $log, $window, $ionicPlatform, $ionicPopup) ->
   $scope.isPhone = $window.isPhone

@@ -17,7 +17,7 @@ angular.module 'app.controllers', []
         $scope.loading = false
         tyNotify("Logged in as #{username}")
       , (reason) ->
-        tyNotify("Loggin failed")
+        tyNotify("Login failed: "+reason)
         $scope.loading = false
     )
 
