@@ -1,8 +1,8 @@
 window.isPhone = _.contains(['android', 'ios', 'windowsphone'], ionic.Platform.platform())
 window.template_dir = if window.isPhone then "templates_phone/" else "templates_desk/"
 
-angular.module 'app', ['ionic', 'app.controllers', 'app.config', 'app.services', 'app.directives']
-.run(($ionicPlatform, $ionicPopup, $state, $log) ->
+angular.module 'app', ['ionic', 'ngCordova', 'app.controllers', 'app.config', 'app.services', 'app.directives']
+.run(($ionicPlatform, $ionicPopup, $state, $log, $window) ->
   $ionicPlatform.ready( () ->
     if window.cordova and window.cordova.plugins.Keyboard
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true)
@@ -27,4 +27,20 @@ angular.module 'app', ['ionic', 'app.controllers', 'app.config', 'app.services',
     else
       $state.go 'tabs.new'
   , 100)
+
+  if $window.toastr
+    $window.toastr.options =
+      closeButton: false
+      debug: false
+      newestOnTop: true
+      progressBar: false
+      positionClass: "toast-top-right"
+      preventDuplicates: true
+      showDuration: 300
+      hideDuration: 1000
+      timeOut: 1500
+      showEasing: "swing"
+      hideEasing: "linear"
+      showMethod: "fadeIn"
+      hideMethod: "fadeOut"
 )

@@ -1,5 +1,5 @@
 angular.module 'app.controllers', []
-.controller 'loginCtrl', ($scope, tyUserCreds, $log, $state) ->
+.controller 'loginCtrl', ($scope, tyUserCreds, $log, $state, tyNotify) ->
   $scope.data =
     username: ''
     password: ''
@@ -13,11 +13,11 @@ angular.module 'app.controllers', []
       $scope.data.password
     ).then(
       (username) ->
-        $log.info "Logged in as #{username}"
         $state.go 'tabs.new'
         $scope.loading = false
+        tyNotify("Logged in as #{username}")
       , (reason) ->
-        $log.info "Auth failed #{reason}"
+        tyNotify("Loggin failed")
         $scope.loading = false
     )
 

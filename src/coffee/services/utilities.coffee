@@ -3,7 +3,7 @@ angular.module 'app.services'
   (password) ->
     CryptoJS.MD5(password).toString(CryptoJS.enc.Hex)
 )
-.factory('agHttp', ($http, $log, $q) ->
+.factory('agHttp', ($http, $log, $q, tyNotify) ->
   apiCreds = {
     api_key: '5620e86c2be5104ae1902dc0'   # TODO, only for testing purposes
     vendor_id: 1
@@ -18,7 +18,7 @@ angular.module 'app.services'
           else
             reject(d.data.reason || d.data.error)
       , (d) ->
-        $log.debug "Service Error !!" # Add a toast notification right here
+        tyNotify("Could not connect to server, please check your internet connnection", "error") # Add a toast notification right here
       )
     )
   return {
@@ -42,4 +42,18 @@ angular.module 'app.services'
       data.vendor_id = apiCreds.vendor_id
     return deferPromise($http.post(url, data))
   }
+)
+
+.provider('tyNotify', () ->
+  if window.isPhone
+    res = ($cordovaToast) ->
+      (message, style) ->
+        $cordovaToast.showShortBottom(message)
+  else
+    res = ($log) ->
+      (message, style='info') ->
+        if window.toastr
+          window.toastr[style](message)
+        $log.info message
+  $get: res
 )
