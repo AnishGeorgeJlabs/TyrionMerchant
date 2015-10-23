@@ -7,8 +7,8 @@ angular.module('app.directives', ['app.services'])
     scope:
       detailsState: '@'
       order: '='
-      showAccept: '@'
-      showCancel: '@'
+      showAccept: '='
+      showCancel: '='
     templateUrl: base_dir + "dir_orderCard.html"
     controller: ($scope, tyOrderOps) ->
       $scope.accept = () ->
