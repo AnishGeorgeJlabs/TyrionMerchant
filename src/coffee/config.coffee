@@ -3,10 +3,7 @@ angular.module 'app.config', ['app.services']
   $ionicConfigProvider.tabs.position('bottom')
   tyApiEndpointsProvider.useLocalHost(true)
 
-  if _.contains(['android', 'ios', 'windowsphone'], ionic.Platform.platform())
-    base_dir = "templates_phone/"
-  else
-    base_dir = "templates_desk/"
+  base_dir = window.template_dir
 
   $stateProvider
   .state('tabs',

@@ -1,9 +1,6 @@
 angular.module('app.directives', ['app.services'])
-.directive('orderCard', (agIsPhone) ->
-  if agIsPhone()
-    base_dir = "templates_phone/"
-  else
-    base_dir = "templates_desk/"
+.directive('orderCard', ($window) ->
+  base_dir = $window.template_dir
 
   return {
     restrict: 'E'
