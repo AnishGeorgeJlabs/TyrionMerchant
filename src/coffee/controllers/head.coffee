@@ -8,7 +8,7 @@ angular.module('app.controllers')
     $scope.scripts = ['lib/toastr/toastr.min.js']
   $scope.isPhone = $window.isPhone
 )
-.controller('DeviceCtrl', ($scope, $state, $rootScope, $log, $window, $ionicPlatform, $ionicPopup) ->
+.controller('DeviceCtrl', ($scope, $state, $rootScope, $log, $window) ->
   $scope.isPhone = $window.isPhone
   $scope.stateCheck = (name) ->
     $state.includes(name)
@@ -18,5 +18,7 @@ angular.module('app.controllers')
     $scope.merchant_name = creds.name
   )
 
+  $scope.goTo = (name) ->
+    $state.go(name)
 
 )

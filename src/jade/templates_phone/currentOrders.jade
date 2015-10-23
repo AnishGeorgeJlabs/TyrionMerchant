@@ -1,5 +1,9 @@
 ion-view(title='Current orders')
-  ion-content(padding='true').has-header
+  ion-content(
+    padding='true'
+    on-swipe-left='goTo("tabs.past")'
+    on-swipe-right='goTo("tabs.new")'
+  ).has-header
     h3 Current orders!!!
     p
       a(ui-sref='tabs.current-details') Go to details

@@ -1,5 +1,5 @@
 ion-view(title='New orders')
-  ion-content(padding='true').has-header
+  ion-content(padding='true' on-swipe-left='goTo("tabs.current")').has-header
     ion-list
       order-card(ng-repeat='order in orders'
       details-state='"tabs.new.details"'
