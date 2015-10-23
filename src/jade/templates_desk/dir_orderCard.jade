@@ -1,6 +1,6 @@
 .card
   .card-block
-    h5.pull-right.text-muted {{ order.area }}
+    h5.pull-right.text-muted {{ order.area | uppercase }}
     h4.card-title {{ order.order_number }}
     p amount: {{ order.total | currency : "&#8377 " }}
   .card-footer.text-right(ng-if='showAccept || showCancel')

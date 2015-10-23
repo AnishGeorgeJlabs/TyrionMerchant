@@ -1,0 +1,18 @@
+.card
+  .item.item-divider {{ order.order_number }}
+  .item.item-text-wrap.item-button-right
+    strong area: &nbsp
+    span.positive {{ order.area | uppercase}}
+    br
+    strong amount: &nbsp
+    | {{ order.total | currency : "&#8377 " }}
+    button.button.button-stable.button-clear
+      span details &nbsp
+      i.icon.ion-arrow-right-b
+  .item.tabs.tabs-icon-left(ng-if='showAccept || showCancel')
+    a.tab-item(ng-if='showCancel')
+      i.icon.ion-close
+      | Cancel
+    a.tab-item.balanced(ng-if='showAccept')
+      i.icon.ion-checkmark
+      | Accept
