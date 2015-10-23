@@ -1,9 +1,8 @@
 ion-view(title='New orders')
   ion-content(padding='true').has-header
-    order-card(ng-repeat='order in orders'
-    details-state='"tabs.new.details"'
-    show-accept='true'
-    show-cancel='true'
-    order='order')
-    p
-      a(ui-sref='tabs.new-details') Go to details
+    ion-list
+      order-card(ng-repeat='order in orders'
+      details-state='"tabs.new.details"'
+      show-accept='true'
+      show-cancel='true'
+      order='order')

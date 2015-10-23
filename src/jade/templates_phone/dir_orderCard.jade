@@ -6,10 +6,10 @@
     br
     strong amount: &nbsp
     | {{ order.total | currency : "&#8377 " }}
-    button.button.button-stable.button-clear
+    button.button.button-stable.button-clear.padding-top(ui-sref='tabs.new-details')
       span details &nbsp
       i.icon.ion-arrow-right-b
-  .item.tabs.tabs-icon-left(ng-if='showAccept || showCancel')
+  .item.tabs.tabs-icon-left.tabs-light(ng-if='showAccept || showCancel')
     a.tab-item(ng-if='showCancel')
       i.icon.ion-close
       | Cancel

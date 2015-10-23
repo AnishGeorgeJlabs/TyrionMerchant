@@ -1,7 +1,7 @@
 angular.module 'app.config', ['app.services']
 .config(($stateProvider, $urlRouterProvider, $ionicConfigProvider, tyApiEndpointsProvider) ->
   $ionicConfigProvider.tabs.position('bottom')
-  tyApiEndpointsProvider.useLocalHost(true)
+  tyApiEndpointsProvider.useLocalHost(false)
 
   base_dir = window.template_dir
 
