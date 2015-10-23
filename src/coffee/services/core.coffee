@@ -25,37 +25,32 @@ angular.module 'app.services', []
 .factory('tyUserCreds', (tyApiEndpoints, agEncPass, agHttp, $q, $log, $rootScope) ->
   username = ''
   return {
-    username: () -> username
-    isLoggedIn: () -> Boolean(username)
-    logout: () ->
-      username = ''
-      agHttp.setApiCreds('', 0)
-    login: (user, password) ->
-      pass = agEncPass(password)
-      result = $q.defer()
+  username: () -> username
+  isLoggedIn: () -> Boolean(username)
+  logout: () ->
+    username = ''
+    agHttp.setApiCreds('', 0)
+  login: (user, password) ->
+    pass = agEncPass(password)
 
-      agHttp.post(tyApiEndpoints.login,
-        username: user
-        password: pass
-      ).success((d) ->
-        if d.success
-          username = user
-          agHttp.setApiCreds(d.data.api_key, d.data.vendor_id)
-          $rootScope.$emit("app:logged_in", _.pick(d.data, 'name', 'address'))
-          result.resolve(username)
-        else
-          result.reject(d.reason || d.error)
-      )
-      return result.promise
+    agHttp.post(tyApiEndpoints.login,
+      username: user
+      password: pass
+    ).then((data) ->
+      username = user
+      agHttp.setApiCreds(data.api_key, data.vendor_id)
+      $rootScope.$emit("app:logged_in", _.pick(data, 'name', 'address'))
+      username
+    )
   }
 )
 .factory('tyOrderOps', (tyApiEndpoints, agHttp) ->
   return {
-    update_status: (order_number, status) ->
-      agHttp.post(tyApiEndpoints.status_update, { status: status, order_number: order_number })
-    order_list: (status) ->
-      agHttp.get(tyApiEndpoints.order_list, { status: status })
-    order_details: (order_number) ->
-      agHttp.get(tyApiEndpoints.order_details, { order_number: order_number })
+  update_status: (order_number, status) ->
+    agHttp.post(tyApiEndpoints.status_update, {status: status, order_number: order_number})
+  order_list: (status) ->
+    agHttp.get(tyApiEndpoints.order_list, {status: status})
+  order_details: (order_number) ->
+    agHttp.get(tyApiEndpoints.order_details, {order_number: order_number})
   }
 )
