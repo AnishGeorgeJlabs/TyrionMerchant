@@ -7,4 +7,4 @@ plugins/
 www
 .idea
 TyrionMerchant.iml
-!www/custom_lib/
+!www/custom_lib
