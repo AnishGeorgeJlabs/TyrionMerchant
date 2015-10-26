@@ -9289,3 +9289,6 @@ a.button {
 
 #loginPageSpacer {
   height: 40px; }
+
+.pull-right {
+  float: right; }
