@@ -53,21 +53,21 @@ angular.module 'app.config', ['app.services']
 
   # ---------------------------- Phone based details view ------------------------------------------------------------ #
   .state('tabs.new-details',
-    url: '/details'
+    url: '/details/:order_number'
     views:
       new_tab:
         templateUrl: base_dir + 'orderDetails.html'
         controller: 'orderDetailsCtrl'
   )
   .state('tabs.current-details',
-    url: '/details'
+    url: '/details/:order_number'
     views:
       cur_tab:
         templateUrl: base_dir + 'orderDetails.html'
         controller: 'orderDetailsCtrl'
   )
   .state('tabs.past-details',
-    url: '/details'
+    url: '/details/:order_number'
     views:
       pas_tab:
         templateUrl: base_dir + 'orderDetails.html'
@@ -76,17 +76,17 @@ angular.module 'app.config', ['app.services']
 
   # ---------------------------- Web based details View -------------------------------------------------------------- #
   .state('tabs.new.details',
-    url: '/details'
+    url: '/details/:order_number'
     templateUrl: base_dir + 'orderDetails.html'
     controller: 'orderDetailsCtrl'
   )
   .state('tabs.current.details',
-    url: '/details'
+    url: '/details/:order_number'
     templateUrl: base_dir + 'orderDetails.html'
     controller: 'orderDetailsCtrl'
   )
   .state('tabs.past.details',
-    url: '/details'
+    url: '/details/:order_number'
     templateUrl: base_dir + 'orderDetails.html'
     controller: 'orderDetailsCtrl'
   )

@@ -8,7 +8,7 @@
         .card-block
           h5.pull-right.text-info {{ order.area | uppercase }}
           h4.card-title {{ order.order_number }}
-          button.pull-right.btn.btn-link.text-muted(ui-sref='{{"tabs."+config.tab+".details"}}')
+          button.pull-right.btn.btn-link.text-muted(ui-sref='{{"tabs."+config.tab+".details"}}({ order_number: order.order_number })')
             | details &nbsp
             i.fa.fa-chevron-right
           p
