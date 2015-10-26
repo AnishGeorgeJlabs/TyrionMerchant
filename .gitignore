@@ -4,7 +4,7 @@
 node_modules/
 platforms/
 plugins/
-www
-.idea
+www/
+.idea/
 TyrionMerchant.iml
-!www/custom_lib
+!www/custom_lib/
