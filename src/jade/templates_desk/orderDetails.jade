@@ -10,8 +10,8 @@
     h4.card-title Order
 
     // Order table
-    table.table
-      thead.thead-default
+    table.table.table-sm
+      thead.thead-inverse
         tr
           th #
           th Item
@@ -21,19 +21,40 @@
           th Total
       tbody
         tr(ng-repeat-start='item in order')
-          td {{ $index + 1 }}
+          th(scope="row") {{ $index + 1 }}
           td {{ item.name }}
           td {{ item.size }}
-          td {{ item.base_price }}
+          td {{ item.base_price | currency : "&#8377 "}}
           td {{ item.quantity }}
-          td {{ item.sub_total }}
+          td {{ item.sub_total | currency : "&#8377 "}}
         tr(ng-repeat-end ng-repeat='sel in item.custom')
           td
-          td -- {{ sel.name }}
+          td --- {{ sel.name }}
           td
-          td {{ sel.price }}
+          td {{ sel.price | currency : "&#8377 "}}
           td
           td
+        tr
+          td(scope='row') *
+          td VAT (12.5% where applicable)
+          td
+          td
+          td
+          td {{ amount.tax | currency : "&#8377 "}}
+        tr(ng-if='amount.delivery_charges > 0')
+          th(scope="row") *
+          td Delivery charges
+          td
+          td
+          td
+          td {{ amount.delivery_charges | currency : "&#8377 "}}
+        tr.table-info
+          th
+          th Net Amount payable
+          th
+          th
+          th
+          th {{ amount.net_amount_payable | currency : "&#8377 "}}
 
 .card.card-info
   .card-block
