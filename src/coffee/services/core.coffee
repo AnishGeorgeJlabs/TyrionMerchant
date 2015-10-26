@@ -48,8 +48,8 @@ angular.module 'app.services', []
   return {
   update_status: (order_number, status) ->
     agHttp.post(tyApiEndpoints.status_update, {status: status, order_number: order_number})
-  order_list: (status) ->
-    agHttp.get(tyApiEndpoints.order_list, {status: status})
+  order_list: (tab) ->
+    agHttp.get(tyApiEndpoints.order_list, {tab: tab})
   order_details: (order_number) ->
     agHttp.get(tyApiEndpoints.order_details, {order_number: order_number})
   }

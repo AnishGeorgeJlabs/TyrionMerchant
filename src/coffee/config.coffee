@@ -1,7 +1,7 @@
 angular.module 'app.config', ['app.services']
 .config(($stateProvider, $urlRouterProvider, $ionicConfigProvider, tyApiEndpointsProvider) ->
   $ionicConfigProvider.tabs.position('bottom')
-  tyApiEndpointsProvider.useLocalHost(false)
+  tyApiEndpointsProvider.useLocalHost(true)
 
   base_dir = window.template_dir
 
@@ -20,18 +20,24 @@ angular.module 'app.config', ['app.services']
 
   .state('tabs.new',
     url: '/new'
+    params: {
+      type: "new"
+    }
     views:
       new_tab:
         templateUrl: base_dir + 'newOrders.html'
-        controller: 'newOrdersCtrl'
+        controller: 'TabCtrl'
   )
 
   .state('tabs.current',
     url: '/current'
+    params: {
+      type: "current"
+    }
     views:
       cur_tab:
         templateUrl: base_dir + 'currentOrders.html'
-        controller: 'currentOrdersCtrl'
+        controller: 'TabCtrl'
   )
 
   .state('tabs.past',
