@@ -8,7 +8,34 @@
 .card
   .card-block
     h4.card-title Order
-.card
+
+    // Order table
+    table.table
+      thead.thead-default
+        tr
+          th #
+          th Item
+          th Size/Option
+          th Price
+          th Qty
+          th Total
+      tbody
+        tr(ng-repeat-start='item in order')
+          td {{ $index + 1 }}
+          td {{ item.name }}
+          td {{ item.size }}
+          td {{ item.base_price }}
+          td {{ item.quantity }}
+          td {{ item.sub_total }}
+        tr(ng-repeat-end ng-repeat='sel in item.custom')
+          td
+          td -- {{ sel.name }}
+          td
+          td {{ sel.price }}
+          td
+          td
+
+.card.card-info
   .card-block
     h4.card-title Customer Information
 
