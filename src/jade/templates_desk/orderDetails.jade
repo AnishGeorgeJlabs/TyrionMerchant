@@ -5,6 +5,20 @@
     h2.card-title
       | {{ details.order_number }}
       small.text-muted &nbsp {{ details.timestamp.$date | date }}
+    .container-fluid.text-center
+      .row
+        .col-sm-3
+          button.btn.btn-success.btn-block Accept
+          button.btn.btn-secondary.btn-block Cancel
+        .col-sm-1
+          i.fa.fa-caret-right
+        .col-sm-4
+          button.btn.btn-success.btn-block Ready
+          button.btn.btn-warning.btn-block Delay
+        .col-sm-1
+          i.fa.fa-caret-right
+        .col-sm-3
+          button.btn.btn-primary.btn-block Deliver
 .card
   .card-block
     h4.card-title Order
