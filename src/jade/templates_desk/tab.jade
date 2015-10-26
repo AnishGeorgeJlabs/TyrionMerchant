@@ -6,14 +6,23 @@
     .order-list-content
       .card(ng-repeat='order in orders')
         .card-block
-          h5.pull-right.text-muted {{ order.area | uppercase }}
+          h5.pull-right.text-info {{ order.area | uppercase }}
           h4.card-title {{ order.order_number }}
-          p amount: {{ order.total | currency : "&#8377 " }}
+          button.pull-right.btn.btn-link.text-muted(ui-sref='{{"tabs."+config.tab+".details"}}')
+            | details &nbsp
+            i.fa.fa-chevron-right
+          p
+            strong amount: &nbsp
+            span {{ order.total | currency : "&#8377 " }}
+            span(ng-if='config.tab != "new"')
+              br
+              strong status: &nbsp
+              span {{ order.status | uppercase }}
         .card-footer.text-right(ng-if='config.buttons_accept_cancel || config.buttons_complete')
           .btn-group
             button.btn.btn-secondary(ng-if='config.buttons_accept_cancel') Cancel
             button.btn.btn-success(ng-if='config.buttons_accept_cancel') Accept
-            button.btn.btn-success(ng-if='config.buttons_complete') Delivered
+            button.btn.btn-success(ng-if='config.buttons_complete') Deliver
   .col-md-7
     .section-title
       h3 details
