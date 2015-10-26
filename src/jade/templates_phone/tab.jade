@@ -1,0 +1,24 @@
+ion-view(title='{{ config.tab + " orders" }}')
+  ion-content(padding='true').has-header
+    ion-list
+      .card(ng-repeat='order in orders')
+        .item.item-divider {{ order.order_number }}
+        .item.item-text-wrap.item-button-right
+          strong area: &nbsp
+          span.positive {{ order.area | uppercase}}
+          br
+          strong amount: &nbsp
+          | {{ order.total | currency : "&#8377 " }}
+          button.button.button-stable.button-clear.padding-top(ui-sref='')
+            span details &nbsp
+            i.icon.ion-arrow-right-b
+        .item.tabs.tabs-icon-left.tabs-light(ng-if='config.buttons_accept_cancel || config.buttons_complete')
+          a.tab-item(ng-if='config.buttons_accept_cancel')
+            i.icon.ion-close
+            | Cancel
+          a.tab-item.balanced(ng-if='config.buttons_accept_cancel')
+            i.icon.ion-checkmark
+            | Accept
+          a.tab-item.balanced(ng-if='config.buttons_complete')
+            i.icon.ion-checkmark
+            | Delivered

@@ -1,0 +1,21 @@
+.row.full-screen
+  .col-md-5.order-list
+    .section-title
+      h3 orders
+      hr
+    .order-list-content
+      .card(ng-repeat='order in orders')
+        .card-block
+          h5.pull-right.text-muted {{ order.area | uppercase }}
+          h4.card-title {{ order.order_number }}
+          p amount: {{ order.total | currency : "&#8377 " }}
+        .card-footer.text-right(ng-if='config.buttons_accept_cancel || config.buttons_complete')
+          .btn-group
+            button.btn.btn-secondary(ng-if='config.buttons_accept_cancel') Cancel
+            button.btn.btn-success(ng-if='config.buttons_accept_cancel') Accept
+            button.btn.btn-success(ng-if='config.buttons_complete') Delivered
+  .col-md-7
+    .section-title
+      h3 details
+      hr
+    ui-view

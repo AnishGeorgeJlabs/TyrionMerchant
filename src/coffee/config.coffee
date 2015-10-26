@@ -25,7 +25,7 @@ angular.module 'app.config', ['app.services']
     }
     views:
       new_tab:
-        templateUrl: base_dir + 'newOrders.html'
+        templateUrl: base_dir + 'tab.html'
         controller: 'TabCtrl'
   )
 
@@ -36,16 +36,19 @@ angular.module 'app.config', ['app.services']
     }
     views:
       cur_tab:
-        templateUrl: base_dir + 'currentOrders.html'
+        templateUrl: base_dir + 'tab.html'
         controller: 'TabCtrl'
   )
 
   .state('tabs.past',
     url: '/past'
+    params: {
+      type: "past"
+    }
     views:
       pas_tab:
-        templateUrl: base_dir + 'pastOrders.html',
-        controller: 'pastOrdersCtrl'
+        templateUrl: base_dir + 'tab.html',
+        controller: 'TabCtrl'
   )
 
   # ---------------------------- Phone based details view ------------------------------------------------------------ #

@@ -15,4 +15,5 @@ angular.module('app.controllers')
     $log.debug "No orders retrieved: #{JSON.stringify(reason)}"
   )
 
+  $scope.update_status = tyOrderOps.update_status
 )
