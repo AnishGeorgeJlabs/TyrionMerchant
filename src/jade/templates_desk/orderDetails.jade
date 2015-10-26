@@ -1,2 +1,27 @@
-h3 Order details
-button.btn.btn-lg(ui-sref='^') Go back
+.card
+  .card-block
+    button.pull-right.btn.btn-link.text-muted(ui-sref='^')
+      i.fa.fa-times.fa-lg
+    h2.card-title
+      | {{ details.order_number }}
+      small.text-muted &nbsp {{ details.timestamp.$date | date }}
+.card
+  .card-block
+    h4.card-title Order
+.card
+  .card-block
+    h4.card-title Customer Information
+
+    div.p-x-lg
+      dl.dl-horizontal
+        dt.col-sm-3 Name:
+        dd.col-sm-9 {{ details.name }}
+
+        dt.col-sm-3 Phone:
+        dd.col-sm-9 {{ details.phone }}
+
+        dt.col-sm-3 Email:
+        dd.col-sm-9 {{ details.email }}
+
+        dt.col-sm-3 Address:
+        dd.col-sm-9 {{ details.address }}
