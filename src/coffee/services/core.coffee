@@ -1,5 +1,9 @@
 angular.module 'app.services', []
 .provider('tyApiEndpoints', () ->
+  ###
+    This service provides for all the api endpoints for tyrion,
+    It is configurable to point to the actual amazon web service or the locally running development server
+  ###
   externalHost = "http://lannister-api.elasticbeanstalk.com/tyrion/"
   localHost = "http://127.0.0.1:8000/tyrion/"
 
@@ -23,6 +27,10 @@ angular.module 'app.services', []
 )
 
 .factory('tyUserCreds', (tyApiEndpoints, agEncPass, agHttp, $q, $log, $rootScope) ->
+  ###
+    This service manages the user credentials and the login and logout process
+    Mainly, it interfaces with the agHttp service to register the api_key and vendor_id once received
+  ###
   username = ''
   return {
   username: () -> username
@@ -44,7 +52,36 @@ angular.module 'app.services', []
     )
   }
 )
-.factory('tyOrderOps', (tyApiEndpoints, agHttp, tyNotify) ->
+.factory('tyOrderOps', (tyApiEndpoints, agHttp, tyNotify, $interval) ->
+  ###
+    All the necessary operation on orders
+  ###
+
+  # --------------- Private data ----------------- #
+  data = {
+    new: []
+    current: []
+    past: []
+  }
+
+  callbacks = {
+    new: []
+    current: []
+    past: []
+  }
+
+  get_list = (tab) -> agHttp.get(tyApiEndpoints.order_list, {tab: tab}).then(
+    (result) ->
+      data[tab] = result
+      fn(data[tab]) for fn in callbacks[tab]
+  )
+
+  # ----------- Periodic refresh of all the lists ---------------- #
+  refresh = () ->
+    _.each(['new', 'current', 'past'], get_list)
+
+  $interval(refresh, 5000)
+
   return {
   update_status: (order_number, status) ->
     agHttp.post(tyApiEndpoints.status_update, {status: status, order_number: order_number})
@@ -52,16 +89,21 @@ angular.module 'app.services', []
       (result) ->
         if result
           tyNotify("order #{order_number} has been #{status}", "success")
-          # todo, do any kind of refresh and other operations here
+          refresh()
         else
           tyNotify("failed to update status, please refresh", "warning")
     , (reason) ->
       if reason
         tyNotify("update failed: #{JSON.stringify(reason)}")
     )
-  order_list: (tab) ->
-    agHttp.get(tyApiEndpoints.order_list, {tab: tab})
   order_details: (order_number) ->
     agHttp.get(tyApiEndpoints.order_details, {order_number: order_number})
+
+  register_callback: (tab, fn) ->
+    callbacks[tab].push(fn)
+    fn(data[tab])
+
+  refresh_now: (tab) ->
+    get_list(tab)
   }
 )

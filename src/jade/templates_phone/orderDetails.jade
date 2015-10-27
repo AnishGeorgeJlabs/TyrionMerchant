@@ -14,20 +14,20 @@ ion-view(title='Order details' cache-view="false")
         strong status: &nbsp
         | {{ details.status }}
       .item.tabs.tabs-icon-left(ng-if='details.status == "placed"')
-        a.tab-item
+        a.tab-item(ng-click='update_status(details.order_number, "cancelled")')
           i.icon.ion-close
           | Cancel
-        a.tab-item.balanced
+        a.tab-item.balanced(ng-click='update_status(details.order_number, "accepted")')
           i.icon.ion-checkmark
           | Accept
       .item.tabs.tabs-icon-left(ng-if='details.status == "accepted"')
-        a.tab-item.energized(ng-disabled='details.status == "delayed" || details.status == "ready"')
+        a.tab-item.energized(ng-disabled='details.status == "delayed" || details.status == "ready"' ng-click='update_status(details.order_number, "delayed")')
           i.icon.ion-alert
           | Delay
-        a.tab-item.balanced(ng-disabled='details.status == "ready"')
+        a.tab-item.balanced(ng-disabled='details.status == "ready"' ng-click='update_status(details.order_number, "ready")')
           i.icon.ion-checkmark
           | Ready
-        a.tab-item.positive
+        a.tab-item.positive(ng-click='update_status(details.order_number, "delivered")')
           i.icon.ion-paper-airplane
           | Deliver
 

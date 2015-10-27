@@ -7,10 +7,9 @@ angular.module('app.controllers')
   }
 
   $scope.orders = []
-  tyOrderOps.order_list($scope.config.tab)
-  .then((data) ->
+  tyOrderOps.register_callback($scope.config.tab, (data) ->
     $scope.orders = data
-  , (reason) ->
+    $log.debug "Got data for #{$scope.config.tab}"
   )
 
   $scope.update_status = tyOrderOps.update_status
