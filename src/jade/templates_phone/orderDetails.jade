@@ -59,11 +59,13 @@ ion-view(title='Order details' cache-view="false")
         i.icon.ion-person
         | {{ details.name }}
       .item.item-icon-left
-        i.icon.ion-ios-telephone
-        | {{ details.phone }}
+        a(ng-href='tel:{{details.phone}}').balanced
+          i.icon.ion-ios-telephone
+          | {{ details.phone }}
       .item.item-icon-left
-        i.icon.ion-email
-        | {{ details.email }}
+        a(ng-href='mailto:{{details.email}}').positive
+          i.icon.ion-email
+          | {{ details.email }}
       .item.item-icon-left.item-text-wrap
         i.icon.ion-ios-home
         | {{ details.address }}

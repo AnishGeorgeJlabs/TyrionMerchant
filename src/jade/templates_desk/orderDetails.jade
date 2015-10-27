@@ -1,4 +1,7 @@
-.card
+.text-center(ng-if='loading').p-t-lg
+  i.fa.fa-spinner.fa-pulse.fa-3x
+  .text-muted.p-t-md loading the order details, please wait
+.card(ng-if='!loading')
   .card-block
     button.pull-right.btn.btn-link.text-muted(ui-sref='^')
       i.fa.fa-times.fa-lg
@@ -29,7 +32,7 @@
           button.btn.btn-primary.btn-block
             i.fa.fa-paper-plane
             | &nbsp Deliver
-.card
+.card(ng-if='!loading')
   .card-block
     h4.card-title Order
 
@@ -80,7 +83,7 @@
           th
           th {{ amount.net_amount_payable | currency : "&#8377 "}}
 
-.card.card-info
+.card.card-info(ng-if='!loading')
   .card-block
     h4.card-title Customer Information
 
@@ -90,10 +93,12 @@
         dd.col-sm-9 {{ details.name }}
 
         dt.col-sm-3 Phone:
-        dd.col-sm-9 {{ details.phone }}
+        dd.col-sm-9
+          a(ng-href="tel: {{ details.phone }}") {{ details.phone }}
 
         dt.col-sm-3 Email:
-        dd.col-sm-9 {{ details.email }}
+        dd.col-sm-9
+          a(ng-href="mailto:{{ details.email }}") {{ details.email }}
 
         dt.col-sm-3 Address:
         dd.col-sm-9 {{ details.address }}
