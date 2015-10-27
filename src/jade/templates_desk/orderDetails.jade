@@ -8,7 +8,11 @@
     h2.card-title
       | {{ details.order_number }}
       small.text-muted &nbsp {{ details.timestamp.$date | date }}
-    .container-fluid.text-center
+    h5
+      strong status:&nbsp
+      | {{ details.status }}
+
+    .container-fluid.text-center(ng-if="details.status != 'delivered'").p-t-md
       .row
         fieldset.col-sm-3(ng-disabled='details.status != "placed"')
           button.btn.btn-success.btn-block

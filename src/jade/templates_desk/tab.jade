@@ -20,13 +20,19 @@
               span {{ order.status | uppercase }}
         .card-footer.text-right(ng-if='config.buttons_accept_cancel || config.buttons_complete')
           .btn-group
-            button.btn.btn-secondary(ng-if='config.buttons_accept_cancel')
+            button.btn.btn-secondary(
+            ng-if='config.buttons_accept_cancel'
+            ng-click='update_status(order.order_number, "cancelled")')
               i.fa.fa-times
               | &nbsp Cancel
-            button.btn.btn-success(ng-if='config.buttons_accept_cancel')
+            button.btn.btn-success(
+            ng-if='config.buttons_accept_cancel'
+            ng-click='update_status(order.order_number, "accepted")')
               i.fa.fa-check
               | &nbsp Accept
-            button.btn.btn-primary(ng-if='config.buttons_complete')
+            button.btn.btn-primary(
+            ng-if='config.buttons_complete'
+            ng-click='update_status(order.order_number, "delivered")')
               i.fa.fa-paper-plane
               | &nbsp Deliver
   .col-md-7

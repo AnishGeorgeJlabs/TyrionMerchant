@@ -15,12 +15,18 @@ ion-view(title='{{ config.tab + " orders" }}')
             span details &nbsp
             i.icon.ion-arrow-right-b
         .item.tabs.tabs-icon-left.tabs-light(ng-if='config.buttons_accept_cancel || config.buttons_complete')
-          a.tab-item(ng-if='config.buttons_accept_cancel')
+          a.tab-item(
+            ng-if='config.buttons_accept_cancel'
+            ng-click='update_status(order.order_number, "cancelled")')
             i.icon.ion-close
             | Cancel
-          a.tab-item.balanced(ng-if='config.buttons_accept_cancel')
+          a.tab-item.balanced(
+            ng-if='config.buttons_accept_cancel'
+            ng-click='update_status(order.order_number, "accepted")')
             i.icon.ion-checkmark
             | Accept
-          a.tab-item.positive(ng-if='config.buttons_complete')
+          a.tab-item.positive(
+            ng-if='config.buttons_complete'
+            ng-click='update_status(order.order_number, "delivered")')
             i.icon.ion-checkmark
             | Deliver

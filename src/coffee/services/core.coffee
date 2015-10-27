@@ -44,10 +44,21 @@ angular.module 'app.services', []
     )
   }
 )
-.factory('tyOrderOps', (tyApiEndpoints, agHttp) ->
+.factory('tyOrderOps', (tyApiEndpoints, agHttp, tyNotify) ->
   return {
   update_status: (order_number, status) ->
     agHttp.post(tyApiEndpoints.status_update, {status: status, order_number: order_number})
+    .then(
+      (result) ->
+        if result
+          tyNotify("order #{order_number} has been #{status}", "success")
+          # todo, do any kind of refresh and other operations here
+        else
+          tyNotify("failed to update status, please refresh", "warning")
+    , (reason) ->
+      if reason
+        tyNotify("update failed: #{JSON.stringify(reason)}")
+    )
   order_list: (tab) ->
     agHttp.get(tyApiEndpoints.order_list, {tab: tab})
   order_details: (order_number) ->
