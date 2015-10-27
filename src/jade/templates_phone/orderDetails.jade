@@ -1,3 +1,26 @@
 ion-view(title='Order details' cache-view="false")
   ion-content(padding='false').has-header
-    h3 Order details
+    .list
+      .item.item-divider
+        .pull-right.calm.text-small {{ details.timestamp.$date | date }}
+        | {{ details.order_number }}
+      .item.text-center
+        strong status: &nbsp
+        | {{ details.status }}
+      .item.tabs.tabs-icon-left(ng-if='details.status == "placed"')
+        a.tab-item
+          i.icon.ion-close
+          | Cancel
+        a.tab-item
+          i.icon.ion-checkmark.balanced
+          | Accept
+      .item.tabs.tabs-icon-left(ng-if='details.status == "accepted"')
+        a.tab-item.energized
+          i.icon.ion-alert
+          | Delay
+        a.tab-item.balanced
+          i.icon.ion-checkmark
+          | Ready
+        a.tab-item.positive
+          i.icon.ion-paper-airplane
+          | Deliver
