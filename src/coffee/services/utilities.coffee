@@ -19,6 +19,7 @@ angular.module 'app.services'
             reject(d.data.reason || d.data.error)
       , (d) ->
         tyNotify("Could not connect to server, please check your internet connnection", "error") # Add a toast notification right here
+        reject()
       )
     )
   return {
