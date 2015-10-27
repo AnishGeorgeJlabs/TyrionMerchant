@@ -21,6 +21,6 @@ ion-view(title='{{ config.tab + " orders" }}')
           a.tab-item.balanced(ng-if='config.buttons_accept_cancel')
             i.icon.ion-checkmark
             | Accept
-          a.tab-item.balanced(ng-if='config.buttons_complete')
+          a.tab-item.positive(ng-if='config.buttons_complete')
             i.icon.ion-checkmark
             | Deliver

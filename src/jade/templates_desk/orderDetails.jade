@@ -8,17 +8,27 @@
     .container-fluid.text-center
       .row
         fieldset.col-sm-3(ng-disabled='details.status != "placed"')
-          button.btn.btn-success.btn-block Accept
-          button.btn.btn-secondary.btn-block Cancel
+          button.btn.btn-success.btn-block
+            i.fa.fa-check
+            | &nbsp Accept
+          button.btn.btn-secondary.btn-block
+            i.fa.fa-times
+            | &nbsp Cancel
         .col-sm-1
           i.fa.fa-caret-right.fa-3x
         fieldset.col-sm-4(ng-disabled='details.status == "placed"')
-          button.btn.btn-success.btn-block(ng-disabled='details.status == "ready"') Ready
-          button.btn.btn-warning.btn-block(ng-disabled='details.status == "delayed" || details.status == "ready"') Delay
+          button.btn.btn-success.btn-block(ng-disabled='details.status == "ready"')
+            i.fa.fa-check
+            | &nbsp Ready
+          button.btn.btn-warning.btn-block(ng-disabled='details.status == "delayed" || details.status == "ready"')
+            i.fa.fa-exclamation
+            | &nbsp Delay
         .col-sm-1
           i.fa.fa-caret-right.fa-3x
         fieldset.col-sm-3(ng-disabled='details.status == "placed"')
-          button.btn.btn-primary.btn-block Deliver
+          button.btn.btn-primary.btn-block
+            i.fa.fa-paper-plane
+            | &nbsp Deliver
 .card
   .card-block
     h4.card-title Order
