@@ -1,6 +1,7 @@
 ion-view(title='Order details' cache-view="false")
   ion-content(padding='false').has-header
     .list
+      // Order header
       .item.item-divider
         .pull-right.calm.text-small {{ details.timestamp.$date | date }}
         | {{ details.order_number }}
@@ -24,3 +25,16 @@ ion-view(title='Order details' cache-view="false")
         a.tab-item.positive
           i.icon.ion-paper-airplane
           | Deliver
+
+      // Actual order
+      .item.item-divider order
+
+      .item(ng-repeat-start="item in order")
+        span.quantity {{ item.quantity }}x
+        span.badge {{ item.base_price | currency : "&#8377 " }}
+        span {{ item.name }}
+        span(ng-if='item.size') : {{ item.size }}
+      .item(ng-repeat-end ng-repeat='sel in item.custom').customization
+        span.badge {{ sel.price | currency : "&#8377 " }}
+        .customization-selection
+          | {{ sel.name }}
