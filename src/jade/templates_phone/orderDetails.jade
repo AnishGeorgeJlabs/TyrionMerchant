@@ -38,3 +38,27 @@ ion-view(title='Order details' cache-view="false")
         span.badge {{ sel.price | currency : "&#8377 " }}
         .customization-selection
           | {{ sel.name }}
+      .item
+        span.badge {{ amount.tax | currency : "&#8377 "}}
+        span VAT (where applicable)
+      .item(ng-if='amount.delivery_charges > 0')
+        span.badge {{ amount.delivery_charges | currency : "&#8377 "}}
+        span Delivery charges
+      .item.positive-bg.light
+        span.badge.badge-dark {{ amount.net_amount_payable | currency : "&#8377 "}}
+        span Net Amount payable
+
+
+      .item.item-divider customer information
+      .item.item-icon-left.item-text-wrap
+        i.icon.ion-person
+        | {{ details.name }}
+      .item.item-icon-left
+        i.icon.ion-ios-telephone
+        | {{ details.phone }}
+      .item.item-icon-left
+        i.icon.ion-email
+        | {{ details.email }}
+      .item.item-icon-left.item-text-wrap
+        i.icon.ion-ios-home
+        | {{ details.address }}
