@@ -41,7 +41,8 @@ html(ng-app='app')
   body(animation="slide-left-right-ios7" ng-controller='DeviceCtrl')
     div(ng-if='isPhone')
       ion-nav-bar.bar-stable
-        ion-nav-back-button.button-icon.icon.ion-ios-arrow-back Back
+        // ion-nav-back-button.button-icon.icon.ion-ios-arrow-back
+        ion-nav-back-button
       ion-nav-view
     .container-fluid(ng-if='!isPhone')
       ui-view
