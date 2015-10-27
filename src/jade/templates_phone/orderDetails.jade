@@ -21,10 +21,10 @@ ion-view(title='Order details' cache-view="false")
           i.icon.ion-checkmark.balanced
           | Accept
       .item.tabs.tabs-icon-left(ng-if='details.status == "accepted"')
-        a.tab-item.energized(ng-disabled='details.status == "delayed"')
+        a.tab-item.energized(ng-disabled='details.status == "delayed" || details.status == "ready"')
           i.icon.ion-alert
           | Delay
-        a.tab-item.balanced
+        a.tab-item.balanced(ng-disabled='details.status == "ready"')
           i.icon.ion-checkmark
           | Ready
         a.tab-item.positive

@@ -7,17 +7,17 @@
       small.text-muted &nbsp {{ details.timestamp.$date | date }}
     .container-fluid.text-center
       .row
-        .col-sm-3
+        fieldset.col-sm-3(ng-disabled='details.status != "placed"')
           button.btn.btn-success.btn-block Accept
           button.btn.btn-secondary.btn-block Cancel
         .col-sm-1
           i.fa.fa-caret-right.fa-3x
-        .col-sm-4
-          button.btn.btn-success.btn-block Ready
-          button.btn.btn-warning.btn-block Delay
+        fieldset.col-sm-4(ng-disabled='details.status == "placed"')
+          button.btn.btn-success.btn-block(ng-disabled='details.status == "ready"') Ready
+          button.btn.btn-warning.btn-block(ng-disabled='details.status == "delayed" || details.status == "ready"') Delay
         .col-sm-1
           i.fa.fa-caret-right.fa-3x
-        .col-sm-3
+        fieldset.col-sm-3(ng-disabled='details.status == "placed"')
           button.btn.btn-primary.btn-block Deliver
 .card
   .card-block
