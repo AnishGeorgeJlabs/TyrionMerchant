@@ -1,6 +1,11 @@
 ion-view(title='Order details' cache-view="false")
   ion-content(padding='false').has-header
-    .list
+    .text-center(ng-if='loading')
+      div.padding-top
+        ion-spinner(icon='lines')
+      span.calm loading the order details, please wait
+
+    .list(ng-if='!loading')
       // Order header
       .item.item-divider
         .pull-right.calm.text-small {{ details.timestamp.$date | date }}
