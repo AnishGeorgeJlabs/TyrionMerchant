@@ -52,7 +52,7 @@ angular.module 'app.services', []
     )
   }
 )
-.factory('tyOrderOps', (tyApiEndpoints, agHttp, tyNotify, $interval) ->
+.factory('tyOrderOps', (tyApiEndpoints, agHttp, tyNotify, $interval, $rootScope) ->
   ###
     All the necessary operation on orders
   ###
@@ -80,7 +80,10 @@ angular.module 'app.services', []
   refresh = () ->
     _.each(['new', 'current', 'past'], get_list)
 
-  $interval(refresh, 5000)
+  repetition = $interval(refresh, 5000)
+  $rootScope.$on("$destroy", () ->
+    $interval.cancel(repetition)
+  )
 
   return {
   update_status: (order_number, status) ->
