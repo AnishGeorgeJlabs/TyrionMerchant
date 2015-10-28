@@ -90,6 +90,7 @@ angular.module 'app.services', []
     repetition = $interval(() ->
       get_list('new')
     , 5000)
+    refresh()
   )
 
   $rootScope.$on("$destroy", () ->
