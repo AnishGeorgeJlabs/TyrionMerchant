@@ -7,6 +7,14 @@ angular.module('app.controllers')
     tab: $stateParams.type
     buttons_accept_cancel: $stateParams.type == "new"
     buttons_complete: $stateParams.type == "current"
+    right_swipe: switch $stateParams.type
+      when "new" then "past"
+      when "current" then "new"
+      when "past" then "current"
+    left_swipe: switch $stateParams.type
+      when "new" then "current"
+      when "current" then "past"
+      when "past" then "new"
   }
 
   $scope.orders = []

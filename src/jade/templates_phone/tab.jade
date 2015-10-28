@@ -1,5 +1,9 @@
 ion-view(title='{{ config.tab + " orders" }}')
-  ion-content(padding='true' ng-class="{'center': orders.length == 0}").has-header
+  ion-content(
+  padding='true'
+  on-swipe-right='goTo("tabs." + config.right_swipe)'
+  on-swipe-left='goTo("tabs."+config.left_swipe)'
+  ng-class="{'center': orders.length == 0}").has-header
     ion-list
       .calm(ng-if='orders.length == 0').wait-message
         i.icon.ion-information-circled
