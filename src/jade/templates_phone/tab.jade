@@ -1,10 +1,22 @@
 ion-view(title='{{ config.tab + " orders" }}')
   ion-content(padding='true').has-header
     ion-list
+      .text-center.padding-top.calm(ng-if='orders.length == 0')
+        | nothing to show&nbsp
+        i.icon.ion-thumbsup
       .card(ng-repeat='order in orders')
         .item.item-divider
-          .pull-right.positive(ng-if='config.tab != "new"') {{ order.status | uppercase }}
+          .pull-right.text-small(
+          ng-if='config.tab != "new"'
+          ng-class='get_color(order.status)'
+          )
+            | {{ order.status | uppercase }}
           span {{ order.order_number }}
+          //
+            ng-class="{'positive': order.status == 'delivered'," +
+            "'energized': order.status == 'delayed'," +
+            "'assertive': order.status == 'cancelled'," +
+            "'balanced': order.status == 'accepted' || order.status == 'ready'}"
         .item.item-text-wrap.item-button-right
           strong area: &nbsp
           span {{ order.area | uppercase}}

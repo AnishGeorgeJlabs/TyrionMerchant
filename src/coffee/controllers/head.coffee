@@ -11,7 +11,7 @@ angular.module('app.controllers')
     $scope.scripts = ['lib/toastr/toastr.min.js']
   $scope.isPhone = $window.isPhone
 )
-.controller('DeviceCtrl', ($scope, $state, $rootScope, $log, $window) ->
+.controller('DeviceCtrl', ($scope, $state, $rootScope, $log, $window, tyColors) ->
   $scope.isPhone = $window.isPhone
   $scope.stateCheck = (name) ->
     $state.includes(name)
@@ -23,5 +23,7 @@ angular.module('app.controllers')
 
   $scope.goTo = (name) ->
     $state.go(name)
+
+  $scope.get_color = tyColors
 
 )

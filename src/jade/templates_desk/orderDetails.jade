@@ -10,7 +10,7 @@
       small.text-muted &nbsp {{ details.timestamp.$date | date }}
     h5
       strong status:&nbsp
-      | {{ details.status }}
+      span(ng-class='"text-" + get_color(details.status)') {{ "order " + details.status | uppercase }}
 
     .container-fluid.text-center(ng-if="details.status != 'delivered' && details.status != 'cancelled'").p-t-md
       .row
@@ -87,7 +87,7 @@
           th
           th {{ amount.net_amount_payable | currency : "&#8377 "}}
 
-.card.card-info(ng-if='!loading')
+.card.customer-info(ng-if='!loading')
   .card-block
     h4.card-title Customer Information
 

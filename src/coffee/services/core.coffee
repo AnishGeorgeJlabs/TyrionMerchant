@@ -104,7 +104,10 @@ angular.module 'app.services', []
 
   register_callback: (tab, fn) ->
     callbacks[tab].push(fn)
-    fn(data[tab])
+    if data[tab].length == 0
+      get_list(tab)
+    else
+      fn(data[tab])
 
   refresh_now: (tab) ->
     get_list(tab)

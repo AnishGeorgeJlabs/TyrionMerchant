@@ -4,6 +4,9 @@
       h3 orders
       hr
     .order-list-content
+      .text-center.text-muted(ng-if='orders.length == 0')
+        | nothing to show &nbsp
+        i.fa.fa-thumbs-o-up
       .card(ng-repeat='order in orders')
         .card-block
           h5.pull-right.text-info {{ order.area | uppercase }}
@@ -17,7 +20,7 @@
             span(ng-if='config.tab != "new"')
               br
               strong status: &nbsp
-              span {{ order.status | uppercase }}
+              span(ng-class='"text-" + get_color(order.status)') {{ order.status | uppercase }}
         .card-footer.text-right(ng-if='config.buttons_accept_cancel || config.buttons_complete')
           .btn-group
             button.btn.btn-secondary(

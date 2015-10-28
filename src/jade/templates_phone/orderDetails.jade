@@ -12,7 +12,7 @@ ion-view(title='Order details' cache-view="false")
         | {{ details.order_number }}
       .item.text-center
         strong status: &nbsp
-        | {{ details.status }}
+        span(ng-class='get_color(details.status)') {{ "order " + details.status | uppercase }}
       .item.tabs.tabs-icon-left(ng-if='details.status == "placed"')
         a.tab-item(ng-click='update_status("cancelled")')
           i.icon.ion-close

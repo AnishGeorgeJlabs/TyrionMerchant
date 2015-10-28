@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-.controller('TabCtrl', ($scope, $stateParams, tyOrderOps, $log, tyNotify) ->
+.controller('TabCtrl', ($scope, $stateParams, tyOrderOps, $log) ->
   $scope.config = {
     tab: $stateParams.type
     buttons_accept_cancel: $stateParams.type == "new"

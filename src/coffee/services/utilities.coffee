@@ -58,3 +58,31 @@ angular.module 'app.services'
         $log.info message
   $get: res
 )
+
+.provider('agColorCodes', () ->
+  if window.isPhone
+    colors =
+      primary: 'positive'
+      warning: 'energize'
+      success: 'balanced'
+      danger: 'assertive'
+  else
+    colors =
+      primary: 'primary'
+      warning: 'warning'
+      success: 'success'
+      danger: 'danger'
+  $get: () ->
+    (type) ->
+      colors[type]
+)
+
+.factory('tyColors', (agColorCodes) ->
+  (status) ->
+    switch status
+      when 'placed' then ''
+      when 'accepted','ready' then agColorCodes('success')
+      when 'cancelled' then agColorCodes('danger')
+      when 'delayed' then agColorCodes('warning')
+      when 'delivered' then agColorCodes('primary')
+)
