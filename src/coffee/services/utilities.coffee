@@ -4,9 +4,14 @@ angular.module 'app.services'
     CryptoJS.MD5(password).toString(CryptoJS.enc.Hex)
 )
 .factory('agHttp', ($http, $log, $q, tyNotify) ->
+  ###
   apiCreds = {
     api_key: '5620e86c2be5104ae1902dc0'   # TODO, only for testing purposes
     vendor_id: 1
+  }###
+  apiCreds = {
+    api_key: ''
+    vendor_id: 0
   }
 
   deferPromise = (httpPromise) ->

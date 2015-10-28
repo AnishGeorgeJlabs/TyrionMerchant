@@ -85,9 +85,12 @@ angular.module 'app.services', []
   refresh = () ->
     _.each(['new', 'current', 'past'], get_list)
 
-  repetition = $interval(() ->
+  repetition = null
+  $rootScope.$on("app:logged_in", (evt, creds) ->
+    repetition = $interval(() ->
       get_list('new')
     , 5000)
+  )
 
   $rootScope.$on("$destroy", () ->
     $interval.cancel(repetition)
