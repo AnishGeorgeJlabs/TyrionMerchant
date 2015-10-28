@@ -51,26 +51,26 @@ angular.module 'app.services'
 )
 
 .provider('tyNotify', () ->
-  if window.isPhone and window.cordova
-    res = ($cordovaToast) ->
+  if window.isPhone
+    res = ($cordovaToast, $ionicPopup, $timeout) ->
       (message, style) ->
-        $cordovaToast.showShortBottom(message)
-  else if window.isPhone
-    res = ($ionicPopup, $timeout) ->
-      (message, style) ->
-        res = $ionicPopup.alert({
-          template: message
-          okType: 'button-clear button-small'
-        })
-        $timeout(() ->
-          res.close()
-        , 1500)
+        if window.cordova
+          $cordovaToast.showShortBottom(message)
+        else
+          res = $ionicPopup.alert({
+            template: message
+            okType: 'button-clear button-small'
+          })
+          $timeout(() ->
+            res.close()
+          , 1500)
   else
     res = ($log) ->
       (message, style='info') ->
         if window.toastr
           window.toastr[style](message)
         $log.info message
+
   $get: res
 )
 
