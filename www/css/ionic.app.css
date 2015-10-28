@@ -9290,6 +9290,9 @@ a.button {
 #loginPageSpacer {
   height: 40px; }
 
+ion-content {
+  background: url("../img/food.png") repeat; }
+
 .pull-right {
   float: right; }
 
@@ -9315,3 +9318,6 @@ a.button {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }
+
+ion-tabs .tab-nav {
+  background: #fff4cc !important; }

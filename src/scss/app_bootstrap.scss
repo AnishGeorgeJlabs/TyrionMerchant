@@ -15,8 +15,13 @@ body {
 }
 */
 html, body, ui-view, .full-screen { height: 100% }
+.card {
+  background: url("../img/crossword.png") repeat;
+}
+
 body {
   margin-top: 54px;
+  background: url("../img/food.png") repeat;
   .container-fluid {
     height: 100%;
     .row {
@@ -41,4 +46,7 @@ body {
   hr {
     margin-top: 0px;
   }
+}
+.customer-info {
+  background-color: lightcyan;
 }
