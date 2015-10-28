@@ -1,5 +1,8 @@
 angular.module('app.controllers')
-.controller('TabCtrl', ($scope, $stateParams, tyOrderOps, $log) ->
+.controller('TabCtrl', ($scope, $stateParams, tyOrderOps, $log, tyUserCreds, $state) ->
+  if not tyUserCreds.isLoggedIn()
+    $state.go('login')
+
   $scope.config = {
     tab: $stateParams.type
     buttons_accept_cancel: $stateParams.type == "new"

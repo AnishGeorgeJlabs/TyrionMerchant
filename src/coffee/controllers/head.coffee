@@ -11,7 +11,7 @@ angular.module('app.controllers')
     $scope.scripts = ['lib/toastr/toastr.min.js']
   $scope.isPhone = $window.isPhone
 )
-.controller('DeviceCtrl', ($scope, $state, $rootScope, $log, $window, tyColors, tyOrderOps) ->
+.controller('DeviceCtrl', ($scope, $state, $rootScope, $log, $window, tyColors, tyOrderOps, tyUserCreds) ->
   $scope.isPhone = $window.isPhone
   $scope.stateCheck = (name) ->
     $state.includes(name)
