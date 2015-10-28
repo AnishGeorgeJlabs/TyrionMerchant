@@ -11,7 +11,7 @@ angular.module('app.controllers')
     $scope.scripts = ['lib/toastr/toastr.min.js']
   $scope.isPhone = $window.isPhone
 )
-.controller('DeviceCtrl', ($scope, $state, $rootScope, $log, $window, tyColors) ->
+.controller('DeviceCtrl', ($scope, $state, $rootScope, $log, $window, tyColors, tyOrderOps) ->
   $scope.isPhone = $window.isPhone
   $scope.stateCheck = (name) ->
     $state.includes(name)
@@ -26,4 +26,15 @@ angular.module('app.controllers')
 
   $scope.get_color = tyColors
 
+
+  $scope.badges =
+    new: 0
+    current: 0
+
+  tyOrderOps.register_callback('new', (d) ->
+    $scope.badges.new = d.length
+  )
+  tyOrderOps.register_callback('current', (d) ->
+    $scope.badges.current = d.length
+  )
 )

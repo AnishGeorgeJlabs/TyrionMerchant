@@ -1,8 +1,19 @@
 ion-view(title="Tabs Controller")
   ion-tabs.tabs-icon-top
-    ion-tab(title='New' icon-on='ion-ios-bell' icon-off='ion-ios-bell-outline' href='#/tab/new')
+    ion-tab(
+    title='New'
+    icon-on='ion-ios-bell'
+    icon-off='ion-ios-bell-outline'
+    badge='badges.new'
+    badge-style='badge-assertive'
+    href='#/tab/new')
       ion-nav-view(name='new_tab')
-    ion-tab(title='Current' icon-on='ion-ios-stopwatch' icon-off='ion-ios-stopwatch-outline' href='#/tab/current')
+    ion-tab(title='Current'
+    icon-on='ion-ios-stopwatch'
+    icon-off='ion-ios-stopwatch-outline'
+    badge-style='badge-stable'
+    badge='badges.current'
+    href='#/tab/current')
       ion-nav-view(name='cur_tab')
     ion-tab(title='Past' icon-on='ion-ios-checkmark' icon-off='ion-ios-checkmark-outline' href='#/tab/past')
       ion-nav-view(name='pas_tab')
