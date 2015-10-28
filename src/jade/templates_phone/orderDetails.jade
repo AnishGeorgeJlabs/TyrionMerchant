@@ -1,7 +1,7 @@
 ion-view(title='Order details' cache-view="false")
-  ion-content(padding='false').has-header
-    .text-center(ng-if='loading')
-      div.padding-top
+  ion-content(padding='false' ng-class="{'center': loading}").has-header
+    div(ng-if='loading')
+      div.text-center
         ion-spinner(icon='lines')
       span.calm loading the order details, please wait
 
