@@ -5,8 +5,8 @@
       hr
     .order-list-content
       .text-center.text-muted(ng-if='orders.length == 0')
-        | nothing to show &nbsp
-        i.fa.fa-thumbs-o-up
+        i.fa.fa-info-circle
+        | &nbspnothing to show
       .card(ng-repeat='order in orders')
         .card-block
           h5.pull-right.text-info {{ order.area | uppercase }}
