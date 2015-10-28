@@ -14,20 +14,20 @@ ion-view(title='Order details' cache-view="false")
         strong status: &nbsp
         | {{ details.status }}
       .item.tabs.tabs-icon-left(ng-if='details.status == "placed"')
-        a.tab-item(ng-click='update_status(details.order_number, "cancelled")')
+        a.tab-item(ng-click='update_status("cancelled")')
           i.icon.ion-close
           | Cancel
-        a.tab-item.balanced(ng-click='update_status(details.order_number, "accepted")')
+        a.tab-item.balanced(ng-click='update_status("accepted")')
           i.icon.ion-checkmark
           | Accept
       .item.tabs.tabs-icon-left(ng-if='details.status == "accepted"')
-        a.tab-item.energized(ng-disabled='details.status == "delayed" || details.status == "ready"' ng-click='update_status(details.order_number, "delayed")')
+        a.tab-item.energized(ng-disabled='details.status == "delayed" || details.status == "ready"' ng-click='update_status("delayed")')
           i.icon.ion-alert
           | Delay
-        a.tab-item.balanced(ng-disabled='details.status == "ready"' ng-click='update_status(details.order_number, "ready")')
+        a.tab-item.balanced(ng-disabled='details.status == "ready"' ng-click='update_status("ready")')
           i.icon.ion-checkmark
           | Ready
-        a.tab-item.positive(ng-click='update_status(details.order_number, "delivered")')
+        a.tab-item.positive(ng-click='update_status("delivered")')
           i.icon.ion-paper-airplane
           | Deliver
 
