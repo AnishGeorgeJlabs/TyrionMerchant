@@ -52,7 +52,7 @@ angular.module 'app.services', []
     )
   }
 )
-.factory('tyOrderOps', (tyApiEndpoints, agHttp, tyNotify, $interval, $rootScope) ->
+.factory('tyOrderOps', (tyApiEndpoints, agHttp, tyNotify, $interval, $rootScope, tyAudioAlert) ->
   ###
     All the necessary operation on orders
   ###
@@ -74,6 +74,11 @@ angular.module 'app.services', []
     (result) ->
       data[tab] = result
       fn(data[tab]) for fn in callbacks[tab]
+      if tab == "new"
+        if result.length > 0
+          tyAudioAlert.play()
+        else
+          tyAudioAlert.stop()
   )
 
   # ----------- Periodic refresh of all the lists ---------------- #
@@ -120,8 +125,15 @@ angular.module 'app.services', []
 .factory('tyAudioAlert', (ngAudio) ->
   audio = ngAudio.load("sound/ringer.mp3")
   audio.loop = true
+  playing = false
   return {
-    play: () -> audio.play()
-    stop: () -> audio.pause()
+    play: () ->
+      if not playing
+        playing = true
+        audio.play()
+    stop: () ->
+      if playing
+        playing = false
+        audio.pause()
   }
 )
