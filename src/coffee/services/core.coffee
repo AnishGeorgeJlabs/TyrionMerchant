@@ -99,8 +99,8 @@ angular.module 'app.services', []
     .then(
       (result) ->
         if result
-          tyNotify("order #{order_number} has been #{status}", "success")
           refresh()
+          tyNotify("order #{order_number} has been #{status}", "success")
         else
           tyNotify("failed to update status, please refresh", "warning")
     , (reason) ->
