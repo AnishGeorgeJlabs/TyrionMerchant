@@ -1,6 +1,6 @@
 ion-view(title='Order details' cache-view="false")
   ion-content(padding='false' ng-class="{'center': loading}").has-header
-    div(ng-if='loading')
+    div(ng-if='loading').wait-message
       div.text-center
         ion-spinner(icon='lines')
       span.calm loading the order details, please wait
