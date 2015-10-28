@@ -80,7 +80,10 @@ angular.module 'app.services', []
   refresh = () ->
     _.each(['new', 'current', 'past'], get_list)
 
-  repetition = $interval(refresh, 5000)
+  repetition = $interval(() ->
+      get_list('new')
+    , 5000)
+
   $rootScope.$on("$destroy", () ->
     $interval.cancel(repetition)
   )
@@ -111,5 +114,14 @@ angular.module 'app.services', []
 
   refresh_now: (tab) ->
     get_list(tab)
+  }
+)
+
+.factory('tyAudioAlert', (ngAudio) ->
+  audio = ngAudio.load("sound/ringer.mp3")
+  audio.loop = true
+  return {
+    play: () -> audio.play()
+    stop: () -> audio.pause()
   }
 )
