@@ -3,6 +3,7 @@ angular.module 'app.controllers'
   if not tyUserCreds.isLoggedIn()
     $state.go('login')
   $scope.loading = true
+  $scope.disable_buttons = false
 
   get_details = () ->
     tyOrderOps.order_details($stateParams.order_number)
@@ -23,7 +24,10 @@ angular.module 'app.controllers'
   get_details()
 
   $scope.update_status = (status) ->
+    $scope.disable_buttons = true
     tyOrderOps.update_status($scope.details.order_number, status)
     .then(
-      () -> get_details()
+      () ->
+        get_details()
+        $scope.disable_buttons = false
     )
