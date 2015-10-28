@@ -8,7 +8,7 @@ ion-view(title='Order details' cache-view="false")
     .list(ng-if='!loading')
       // Order header
       .item.item-divider
-        .pull-right.calm.text-small {{ details.timestamp.$date | date }}
+        .pull-right.calm.text-small {{ details.timestamp.$date | date : "d MMM, yy H:mm" }}
         | {{ details.order_number }}
       .item.text-center
         strong status: &nbsp
