@@ -2,8 +2,8 @@ ion-view(title='{{ config.tab + " orders" }}')
   ion-content(padding='true' ng-class="{'center': orders.length == 0}").has-header
     ion-list
       .calm(ng-if='orders.length == 0').wait-message
-        | nothing to show&nbsp
-        i.icon.ion-thumbsup
+        i.icon.ion-information-circled
+        | &nbspnothing to show
       .card(ng-repeat='order in orders')
         .item.item-divider
           .pull-right.text-small(
