@@ -34,6 +34,22 @@ body {
 .customer-info {
   background-color: lightcyan;
 }
+/* ----------------- Customizing the process block ------------------------------------ */
+.process-block {
+  fieldset {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+}
+
+@media (max-width: 61.9em) {
+  .process-block {
+    .col-md-4 {
+      padding-right: 1px;
+      padding-right: 1px;
+    }
+  }
+}
 
 /* ----------------- Just for fun, a nice little scrollbar ---------------------------- */
 ::-webkit-scrollbar {
