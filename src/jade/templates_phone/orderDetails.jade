@@ -20,7 +20,7 @@ ion-view(title='Order details' cache-view="false")
         a.tab-item.balanced(ng-click='update_status("accepted")' ng-disabled='disable_buttons')
           i.icon.ion-checkmark
           | Accept
-      .item.tabs.tabs-icon-left(ng-if='details.status == "accepted"')
+      .item.tabs.tabs-icon-left(ng-if='details.status != "cancelled" && details.status != "delivered"')
         a.tab-item.energized(ng-disabled='disable_buttons || details.status == "delayed" || details.status == "ready"' ng-click='update_status("delayed")')
           i.icon.ion-alert
           | Delay
