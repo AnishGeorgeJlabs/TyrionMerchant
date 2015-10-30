@@ -9299,6 +9299,9 @@ ion-content {
 .text-small {
   font-size: 0.9em; }
 
+.text-large {
+  font-size: 1.5em; }
+
 .quantity {
   float: left;
   padding-right: 5px;

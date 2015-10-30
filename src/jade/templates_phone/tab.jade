@@ -5,8 +5,10 @@ ion-view(title='{{ config.tab + " orders" }}')
   on-swipe-left='goTo("tabs."+config.left_swipe)'
   ng-class="{'center': orders.length == 0}").has-header
     ion-list
+      // Message displayed when no data is available
       .calm(ng-if='orders.length == 0').wait-message
-        i.icon.ion-information-circled
+        i.icon.ion-information-circled.text-large
+        br
         | &nbspnothing to show
       .card(ng-repeat='order in orders')
         .item.item-divider
@@ -16,11 +18,6 @@ ion-view(title='{{ config.tab + " orders" }}')
           )
             | {{ order.status | uppercase }}
           span {{ order.order_number }}
-          //
-            ng-class="{'positive': order.status == 'delivered'," +
-            "'energized': order.status == 'delayed'," +
-            "'assertive': order.status == 'cancelled'," +
-            "'balanced': order.status == 'accepted' || order.status == 'ready'}"
         .item.item-text-wrap.item-button-right
           strong area: &nbsp
           span {{ order.area | uppercase}}
