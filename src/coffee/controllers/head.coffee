@@ -10,6 +10,10 @@ angular.module('app.controllers')
                             "custom_lib/font-awesome/css/font-awesome.min.css"]
     $scope.scripts = ['lib/toastr/toastr.min.js']
   $scope.isPhone = $window.isPhone
+
+  # --------- Just some logging for testing ----------- #
+  $log.info "device: #{JSON.stringify(ionic.Platform.device())}"
+  $log.info "Window dimensions: #{$window.innerWidth} x #{$window.innerHeight}"
 ])
 .controller('DeviceCtrl', ['$scope', '$state', '$rootScope', '$window', 'tyColors', 'tyOrderOps',
   ($scope, $state, $rootScope, $window, tyColors, tyOrderOps) ->

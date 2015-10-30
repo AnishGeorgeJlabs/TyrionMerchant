@@ -1,4 +1,16 @@
-window.isPhone = ionic.Platform.platform() in ['android', 'ios', 'windowsphone']
+# ------------------ phone check -------------------------------------------------- #
+if ionic.Platform.isIPad()
+  console.log "tablet!!!!"
+  window.isPhone = false
+  window.isTablet = true
+else if ionic.Platform.platform() in ['android', 'ios', 'windowsphone']
+  console.log "Mobile!!"
+  window.isPhone = true
+  window.isTablet = false
+else
+  console.log "Desktop!!"
+  window.isPhone = false
+  window.isTablet = false
 
 window.template_dir = if window.isPhone then "templates_phone/" else "templates_desk/"
 
