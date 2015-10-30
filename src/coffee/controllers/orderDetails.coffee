@@ -10,7 +10,6 @@ angular.module 'app.controllers'
     .then(
       (data) ->
         $scope.order = data.pretty_order
-        $log.info "We have a pretty order: #{JSON.stringify($scope.order)}"
         $scope.amount = data.amount
         $scope.details = _.omit(data, ['pretty_order', 'amount'])
         $scope.loading = false
