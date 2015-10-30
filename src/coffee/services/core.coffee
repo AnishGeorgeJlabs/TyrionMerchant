@@ -129,18 +129,33 @@ angular.module 'app.services', []
     }
 ])
 
-.factory('tyAudioAlert', ['ngAudio', (ngAudio) ->
-  audio = ngAudio.load("sound/ringer.mp3")
-  audio.loop = true
-  playing = false
-  return {
-    play: () ->
-      if not playing
-        playing = true
-        audio.play()
-    stop: () ->
-      if playing
-        playing = false
-        audio.pause()
-  }
+.factory('tyAudioAlert', ['ngAudio', '$cordovaMedia', '$log', (ngAudio, $cordovaMedia, $log) ->
+    cordova = false
+    audio = ngAudio.load("sound/ringer.mp3")
+    audio.loop = true
+    playing = false
+    return {
+      play: () ->
+        if not cordova and not playing
+          playing = true
+          audio.play()
+        else if cordova
+          audio.stop()
+          audio.play()
+      stop: () ->
+        if not cordova and playing
+          playing = false
+          audio.pause()
+        else if cordova
+          audio.stop()
+      change_to_cordova: () ->
+        $log.info "Changing over to cordova audio"
+        if playing
+          playing = false
+          audio.stop()
+        audio = $cordovaMedia.newMedia("sound/ringer.mp3")
+        cordova = true
+        if playing
+          audio.play()
+    }
 ])

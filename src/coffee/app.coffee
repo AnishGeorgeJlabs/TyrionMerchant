@@ -16,14 +16,17 @@ window.template_dir = if window.isPhone then "templates_phone/" else "templates_
 
 angular.module 'app', ['ionic', 'ngCordova', 'ngAudio',
                        'app.controllers', 'app.config', 'app.services']
-.run([ '$ionicPlatform', '$ionicPopup', '$state', '$log', '$window', '$ionicHistory',
-  ($ionicPlatform, $ionicPopup, $state, $log, $window, $ionicHistory) ->
+.run([ '$ionicPlatform', '$ionicPopup', '$state', '$log', '$window', '$ionicHistory', 'tyAudioAlert',
+  ($ionicPlatform, $ionicPopup, $state, $log, $window, $ionicHistory, tyAudioAlert) ->
     $ionicPlatform.ready(() ->
       if window.cordova and window.cordova.plugins.Keyboard
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true)
       if window.StatusBar
       # org.apache.cordova.statusbar required
         StatusBar.styleDefault();
+
+      if window.cordova
+        tyAudioAlert.change_to_cordova()
 
       $ionicPlatform.registerBackButtonAction(() ->
         if $state.is('tabs.new') || $state.is('login')
