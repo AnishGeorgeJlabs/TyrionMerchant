@@ -48,7 +48,8 @@ angular.module 'app.services', []
       ).then((data) ->
         username = user
         agHttp.setApiCreds(data.api_key, data.vendor_id)
-        $rootScope.$emit("app:logged_in", _.pick(data, 'name', 'address'))
+        broad = {name: data.name, address: data.address}
+        $rootScope.$emit("app:logged_in", broad)
         username
       )
     }
@@ -85,7 +86,7 @@ angular.module 'app.services', []
 
     # ----------- Periodic refresh of all the lists ---------------- #
     refresh = () ->
-      _.each(['new', 'current', 'past'], get_list)
+      get_list tab for tab in ['new', 'current', 'past']
 
     repetition = null
     $rootScope.$on("app:logged_in", (evt, creds) ->

@@ -12,7 +12,10 @@ angular.module 'app.controllers'
         (data) ->
           $scope.order = data.pretty_order
           $scope.amount = data.amount
-          $scope.details = _.omit(data, ['pretty_order', 'amount'])
+          delete data.pretty_order
+          delete data.amount
+          $scope.details = data
+
           $scope.loading = false
 
       , (failure) ->

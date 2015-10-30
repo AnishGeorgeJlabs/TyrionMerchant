@@ -1,4 +1,5 @@
-window.isPhone = _.contains(['android', 'ios', 'windowsphone'], ionic.Platform.platform())
+window.isPhone = ionic.Platform.platform() in ['android', 'ios', 'windowsphone']
+
 window.template_dir = if window.isPhone then "templates_phone/" else "templates_desk/"
 
 angular.module 'app', ['ionic', 'ngCordova', 'ngAudio',

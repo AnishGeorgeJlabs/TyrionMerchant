@@ -12,7 +12,7 @@ html(ng-app='app')
 
     script(ng-src='{{::script}}' ng-repeat='script in scripts')
 
-    - var jsFiles = ['ionic/js/ionic.bundle.min', 'ngCordova/dist/ng-cordova.min', 'underscore/underscore-min', 'angular-audio/app/angular.audio', 'angular-ui-router/release/angular-ui-router.min']
+    - var jsFiles = ['ionic/js/ionic.bundle.min', 'ngCordova/dist/ng-cordova.min', 'angular-audio/app/angular.audio', 'angular-ui-router/release/angular-ui-router.min']
     each file in jsFiles
       script(src='lib/'+file+'.js')
 
