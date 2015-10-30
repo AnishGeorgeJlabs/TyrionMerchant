@@ -32,7 +32,7 @@ ion-view(title='Order details' cache-view="false")
           | Deliver
 
       // Actual order
-      .item.item-divider order
+      .item.item-divider.text-center Order
 
       .item(ng-repeat-start="item in order")
         span.quantity {{ item.quantity }}x
@@ -54,7 +54,7 @@ ion-view(title='Order details' cache-view="false")
         span Net Amount payable
 
 
-      .item.item-divider customer information
+      .item.item-divider.text-center Customer Information
       .item.item-icon-left.item-text-wrap
         i.icon.ion-person
         | {{ details.name }}
