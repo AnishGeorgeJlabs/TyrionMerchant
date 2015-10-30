@@ -8,6 +8,7 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 var coffee = require('gulp-coffee');
 var jade = require('gulp-jade');
+var uglify = require('gulp-uglify');
 
 var paths = {
   sass: ['./src/scss/**/*.scss'],
@@ -34,6 +35,7 @@ gulp.task('sass', function(done) {
 gulp.task('coffee', function(done) {
   gulp.src(paths.coffee)
     .pipe(coffee().on('error', gutil.log))
+    .pipe(uglify())
     .pipe(gulp.dest('./www/js/'))
     .on('end', done);
 });

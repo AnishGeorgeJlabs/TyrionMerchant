@@ -89,7 +89,7 @@ angular.module 'app.services'
       colors[type]
 )
 
-.factory('tyColors', (agColorCodes) ->
+.factory('tyColors', ['agColorCodes', (agColorCodes) ->
   (status) ->
     switch status
       when 'placed' then ''
@@ -97,4 +97,4 @@ angular.module 'app.services'
       when 'cancelled' then agColorCodes('danger')
       when 'delayed' then agColorCodes('warning')
       when 'delivered' then agColorCodes('primary')
-)
+])
