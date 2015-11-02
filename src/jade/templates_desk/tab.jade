@@ -5,7 +5,8 @@
       hr
     .content
       .text-center.text-muted(ng-if='orders.length == 0')
-        i.fa.fa-info-circle
+        i.fa.fa-info.fa-2x
+        br
         | &nbspnothing to show
       .card(ng-repeat='order in orders')
         .card-block
@@ -43,3 +44,7 @@
       h3 details
       hr
     ui-view
+    .text-center.text-muted(ng-if='stateCheck("tabs.new") || stateCheck("tabs.current") || stateCheck("tabs.past")')
+      i.fa.fa-chevron-left.fa-2x
+      br
+      | &nbspplease select an order from the list
