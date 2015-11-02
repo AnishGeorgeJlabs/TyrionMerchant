@@ -16,8 +16,9 @@ angular.module('app.controllers')
   $log.info "Window dimensions: #{$window.innerWidth} x #{$window.innerHeight}"
 ])
 
-.controller('DeviceCtrl', ['$scope', '$state', '$rootScope', '$window', 'tyColors', 'tyOrderOps', 'tyUserCreds', 'tyNotify'
-  ($scope, $state, $rootScope, $window, tyColors, tyOrderOps, tyUserCreds, tyNotify) ->
+.controller('DeviceCtrl', ['$scope', '$state', '$rootScope', '$window',
+                           'tyColors', 'tyOrderOps', 'tyUserCreds', 'tyNotify', 'tyAudioAlert',
+  ($scope, $state, $rootScope, $window, tyColors, tyOrderOps, tyUserCreds, tyNotify, tyAudioAlert) ->
     $scope.isPhone = $window.isPhone
     $scope.stateCheck = (name) ->
       $state.includes(name)
@@ -49,4 +50,7 @@ angular.module('app.controllers')
       tyNotify("You have been successfully logged out")
       $state.go 'login'
 
+    $scope.toggle_mute = () ->
+      tyAudioAlert.toggle_mute()
+    $scope.is_mute = tyAudioAlert.is_mute
 ])

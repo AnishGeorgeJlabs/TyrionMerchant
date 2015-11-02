@@ -144,6 +144,7 @@ angular.module 'app.services', []
     audio = ngAudio.load("sound/ringer.mp3")
     audio.loop = true
     playing = false
+    mute = false    # only required for cordova
     return {
       play: () ->
         if not cordova and not playing
@@ -158,12 +159,32 @@ angular.module 'app.services', []
           audio.pause()
         else if cordova
           audio.stop()
+
       change_to_cordova: () ->
+        mute = audio.muting
         if playing
           audio.stop()
         audio = $cordovaMedia.newMedia(window.cordova.file.applicationDirectory + "www/sound/ringer.mp3")
         cordova = true
         if playing
           audio.play()
+        if mute
+          audio.setVolume(0.0)
+
+      toggle_mute: () ->
+        if not cordova
+          audio.muting = not audio.muting
+        else if mute
+          audio.setVolume(1.0)
+          mute = false
+        else
+          audio.setVolume(0.0)
+          mute = true
+      is_mute: () ->
+        if not cordova
+          audio.muting
+        else
+          mute
+
     }
 ])

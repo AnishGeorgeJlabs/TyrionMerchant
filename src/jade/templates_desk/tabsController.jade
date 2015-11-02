@@ -23,8 +23,8 @@ nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
             i.fa.fa-fw.fa-sign-out
             | &nbspLogout
       li.nav-item
-        a.nav-link
-          i.fa.fa-volume-up
+        a.nav-link(ng-click='toggle_mute()')
+          i.fa.fa-fw(ng-class="is_mute()?'fa-volume-off': 'fa-volume-up'")
 
 .row.full-screen
   ui-view(name='new_tab')
