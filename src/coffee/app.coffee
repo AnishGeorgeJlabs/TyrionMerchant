@@ -1,14 +1,14 @@
-# ------------------ phone check -------------------------------------------------- #
-if ionic.Platform.isIPad()
-  console.log "tablet!!!!"
+# ------------------ platform  check -------------------------------------------------- #
+if ionic.Platform.isIPad() or (ionic.Platform.platform() == 'android' and navigator.userAgent.indexOf('Mobile') == -1)
+  # We have a tablet
   window.isPhone = false
   window.isTablet = true
 else if ionic.Platform.platform() in ['android', 'ios', 'windowsphone']
-  console.log "Mobile!!"
+  # we have a phone
   window.isPhone = true
   window.isTablet = false
 else
-  console.log "Desktop!!"
+  # we are using a desktop
   window.isPhone = false
   window.isTablet = false
 
