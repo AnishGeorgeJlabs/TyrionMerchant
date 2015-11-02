@@ -129,7 +129,7 @@ angular.module 'app.services', []
     }
 ])
 
-.factory('tyAudioAlert', ['ngAudio', '$cordovaMedia', '$log', (ngAudio, $cordovaMedia, $log) ->
+.factory('tyAudioAlert', ['ngAudio', '$cordovaMedia', (ngAudio, $cordovaMedia) ->
     cordova = false
     audio = ngAudio.load("sound/ringer.mp3")
     audio.loop = true
@@ -149,11 +149,9 @@ angular.module 'app.services', []
         else if cordova
           audio.stop()
       change_to_cordova: () ->
-        $log.info "Changing over to cordova audio"
         if playing
-          playing = false
           audio.stop()
-        audio = $cordovaMedia.newMedia("sound/ringer.mp3")
+        audio = $cordovaMedia.newMedia(window.cordova.file.applicationDirectory + "www/sound/ringer.mp3")
         cordova = true
         if playing
           audio.play()
