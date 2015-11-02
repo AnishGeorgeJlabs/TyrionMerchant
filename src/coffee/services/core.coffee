@@ -116,7 +116,7 @@ angular.module 'app.services', []
     return {
     update_status: (order_number, status) ->
       if status == 'cancelled'
-        tyConfirm("Are you sure you want to cancel the order").then(
+        tyConfirm("Are you sure you want to cancel the order #{order_number}").then(
           (res) ->
             if res
               stat_update(order_number, status)
