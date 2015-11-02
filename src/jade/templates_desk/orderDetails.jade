@@ -8,7 +8,7 @@
         i.fa.fa-times.fa-lg
       h2.card-title
         | {{ details.order_number }}
-        small.text-muted &nbsp {{ details.timestamp.$date | date : "d MMM, yy H:mm" }}
+        small.text-muted &nbsp {{ details.timestamp.$date | date : "d MMM, yy hh:mm a" }}
       h5
         strong status:&nbsp
         span(ng-class='"text-" + get_color(details.status)') {{ "order " + details.status | uppercase }}

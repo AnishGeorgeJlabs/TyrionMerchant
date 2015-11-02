@@ -10,18 +10,20 @@
         | &nbspnothing to show
       .card(ng-repeat='order in orders')
         .card-block
-          h5.pull-right.text-info {{ order.area | uppercase }}
+          h5.pull-right(ng-if='config.tab != "new"' ng-class='"text-" + get_color(order.status)') {{ order.status | uppercase }}
           h4.card-title {{ order.order_number }}
           button.pull-right.btn.btn-link.text-muted(ui-sref='{{"tabs."+config.tab+".details"}}({ order_number: order.order_number })')
             | details &nbsp
             i.fa.fa-chevron-right
           p
+            strong area: &nbsp
+            span.text-info {{ order.area | uppercase }}
+            br
             strong amount: &nbsp
             span {{ order.total | currency : "&#8377 " }}
-            span(ng-if='config.tab != "new"')
-              br
-              strong status: &nbsp
-              span(ng-class='"text-" + get_color(order.status)') {{ order.status | uppercase }}
+            br
+            strong time: &nbsp
+            span {{ order.timestamp.$date | date : "d MMM, yy hh:mm a" }}
         .card-footer.text-right(ng-if='config.buttons_accept_cancel || config.buttons_complete')
           .btn-group
             button.btn.btn-secondary(
