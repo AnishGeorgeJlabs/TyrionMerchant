@@ -46,6 +46,7 @@ html(ng-app='app')
             h1.title {{ merchant_name }}
           ion-content.has-header
             .list.list-borderless
+              #sidebarSpacer.item.spacer
               .item.item-icon-left(ng-click='logout()' menu-close)
                 i.icon.ion-log-out
                 | Logout
