@@ -20,10 +20,13 @@ ion-view(title='{{ config.tab + " orders" }}')
           span {{ order.order_number }}
         .item.item-text-wrap.item-button-right
           strong area: &nbsp
-          span {{ order.area | uppercase}}
+          span.royal {{ order.area | uppercase}}
           br
           strong amount: &nbsp
-          | {{ order.total | currency : "&#8377 " }}
+          span {{ order.total | currency : "&#8377 " }}
+          br
+          strong time: &nbsp
+          span {{ order.timestamp.$date | date : "d MMM, yy hh:mm a" }}
           button.button.button-stable.button-clear.padding-top(ui-sref='{{"tabs."+config.tab+"-details"}}({ order_number: order.order_number })')
             span details &nbsp
             i.icon.ion-arrow-right-b
