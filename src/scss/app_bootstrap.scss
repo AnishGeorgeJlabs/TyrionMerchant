@@ -38,6 +38,20 @@ body {
 .customer-info {
   background-color: lightcyan;
 }
+.badge {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 0 5px 0 5px;
+  color: white;
+  border-radius:10px;
+  box-shadow:0 0 1px #333;
+  font-size: .7em;
+}
+.badge-usual {
+  background: darkgray;
+  color: black;
+}
+
 /* ----------------- Customizing the process block ------------------------------------ */
 .process-block {
   fieldset {

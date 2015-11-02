@@ -4,11 +4,28 @@ nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
     a.navbar-brand {{ merchant_name }}
     ul.nav.navbar-nav
       li.nav-item(ng-class="{'active': stateCheck('tabs.new')}")
-        a.nav-link(ui-sref='tabs.new') New orders
+        a.nav-link(ui-sref='tabs.new')
+          | New orders
+          span.badge.bg-danger(ng-if='badges.new > 0') {{ badges.new }}
       li.nav-item(ng-class="{'active': stateCheck('tabs.current')}")
-        a.nav-link(ui-sref='tabs.current') Current orders
+        a.nav-link(ui-sref='tabs.current')
+          | Current orders
+          span.badge.badge-usual(ng-if='badges.current > 0') {{ badges.current }}
       li.nav-item(ng-class="{'active': stateCheck('tabs.past')}")
         a.nav-link(ui-sref='tabs.past') Past orders
+
+    ul.nav.navbar-nav.pull-right
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(data-toggle='dropdown')
+          i.fa.fa-user
+        .dropdown-menu
+          a.dropdown-item(ng-click='logout()')
+            i.fa.fa-fw.fa-sign-out
+            | &nbspLogout
+      li.nav-item
+        a.nav-link
+          i.fa.fa-volume-up
+
 .row.full-screen
   ui-view(name='new_tab')
   ui-view(name='cur_tab')

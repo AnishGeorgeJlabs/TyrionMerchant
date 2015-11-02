@@ -8,15 +8,16 @@ angular.module('app.controllers')
                             "css/app_bootstrap.min.css",
                             "lib/toastr/toastr.min.css"
                             "custom_lib/font-awesome/css/font-awesome.min.css"]
-    $scope.scripts = ['lib/toastr/toastr.min.js']
+    $scope.scripts = ['lib/toastr/toastr.min.js', 'lib/bootstrap/dist/js/bootstrap.min.js']
   $scope.isPhone = $window.isPhone
 
   # --------- Just some logging for testing ----------- #
   $log.info "device: #{JSON.stringify(ionic.Platform.device())}"
   $log.info "Window dimensions: #{$window.innerWidth} x #{$window.innerHeight}"
 ])
-.controller('DeviceCtrl', ['$scope', '$state', '$rootScope', '$window', 'tyColors', 'tyOrderOps',
-  ($scope, $state, $rootScope, $window, tyColors, tyOrderOps) ->
+
+.controller('DeviceCtrl', ['$scope', '$state', '$rootScope', '$window', 'tyColors', 'tyOrderOps', 'tyUserCreds', 'tyNotify'
+  ($scope, $state, $rootScope, $window, tyColors, tyOrderOps, tyUserCreds, tyNotify) ->
     $scope.isPhone = $window.isPhone
     $scope.stateCheck = (name) ->
       $state.includes(name)
@@ -42,4 +43,10 @@ angular.module('app.controllers')
     tyOrderOps.register_callback('current', (d) ->
       $scope.badges.current = d.length
     )
+
+    $scope.logout = () ->
+      tyUserCreds.logout()
+      tyNotify("You have been successfully logged out")
+      $state.go 'login'
+
 ])
