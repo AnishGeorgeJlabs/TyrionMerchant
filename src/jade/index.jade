@@ -40,9 +40,25 @@ html(ng-app='app')
 
   body(animation="slide-left-right-ios7" ng-controller='DeviceCtrl')
     div(ng-if='isPhone')
-      ion-nav-bar.bar-dark
-        // ion-nav-back-button.button-icon.icon.ion-ios-arrow-back
-        ion-nav-back-button
-      ion-nav-view
+      ion-side-menus
+        ion-side-menu(side='left')
+          header.bar.bar-dark.bar-header.dark-border
+            h1.title {{ merchant_name }}
+          ion-content.has-header
+            .list.list-borderless
+              .item.item-icon-left(ng-click='logout()' menu-close)
+                i.icon.ion-log-out
+                | Logout
+              .item.item-icon-left(ng-click='toggle_mute()')
+                i.icon(ng-class="is_mute()?'ion-android-volume-mute': 'ion-android-volume-up'")
+                | alert volume
+        ion-side-menu-content(drag-content="false")
+          ion-nav-bar.bar-dark
+            ion-nav-buttons
+              button(menu-toggle='left' ng-if='!stateCheck("login")').button.button-icon.icon.ion-navicon
+            // ion-nav-back-button.button-icon.icon.ion-ios-arrow-back
+            ion-nav-back-button
+          ion-nav-view
+
     .container-fluid(ng-if='!isPhone')
       ui-view

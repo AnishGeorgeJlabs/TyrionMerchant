@@ -5,6 +5,13 @@
 ion-content {
   background: url("../img/food.png") repeat;
 }
+ion-side-menu ion-content {
+  background: $dark;
+  .list .item {
+    background: $dark;
+    color: $light;
+  }
+}
 
 .pull-right {
   float: right;

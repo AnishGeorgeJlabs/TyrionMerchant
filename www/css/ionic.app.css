@@ -9293,6 +9293,12 @@ a.button {
 ion-content {
   background: url("../img/food.png") repeat; }
 
+ion-side-menu ion-content {
+  background: #444; }
+  ion-side-menu ion-content .list .item {
+    background: #444;
+    color: #fff; }
+
 .pull-right {
   float: right; }
 

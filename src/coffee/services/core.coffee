@@ -39,6 +39,7 @@ angular.module 'app.services', []
     logout: () ->
       username = ''
       agHttp.setApiCreds('', 0)
+      $rootScope.$emit("app:log_out")
     login: (user, password) ->
       pass = agEncPass(password)
 
@@ -88,6 +89,7 @@ angular.module 'app.services', []
     refresh = () ->
       get_list tab for tab in ['new', 'current', 'past']
 
+
     repetition = null
     $rootScope.$on("app:logged_in", (evt, creds) ->
       repetition = $interval(() ->
@@ -96,9 +98,20 @@ angular.module 'app.services', []
       refresh()
     )
 
-    $rootScope.$on("$destroy", () ->
-      $interval.cancel(repetition)
+    $rootScope.$on("app:log_out", () ->
+      clean_up()
     )
+
+    $rootScope.$on("$destroy", () ->
+      clean_up()
+    )
+
+    clean_up = () ->
+      $interval.cancel(repetition)
+      data.new = []
+      data.current = []
+      data.past = []
+
     stat_update = (order_number, status) ->
       agHttp.post(tyApiEndpoints.status_update, {status: status, order_number: order_number})
       .then(
@@ -139,12 +152,17 @@ angular.module 'app.services', []
     }
 ])
 
-.factory('tyAudioAlert', ['ngAudio', '$cordovaMedia', (ngAudio, $cordovaMedia) ->
+.factory('tyAudioAlert', ['ngAudio', '$cordovaMedia', '$rootScope', (ngAudio, $cordovaMedia, $rootScope) ->
     cordova = false
     audio = ngAudio.load("sound/ringer.mp3")
     audio.loop = true
     playing = false
     mute = false    # only required for cordova
+    $rootScope.$on("app:log_out", () ->
+      audio.stop()
+      playing = false
+      mute = false
+    )
     return {
       play: () ->
         if not cordova and not playing
