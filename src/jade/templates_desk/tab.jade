@@ -1,9 +1,9 @@
 .row.full-screen
-  .col-sm-4.col-md-5.order-list
+  .col-sm-4.col-md-5.pane
     .section-title
       h3 orders
       hr
-    .order-list-content
+    .content
       .text-center.text-muted(ng-if='orders.length == 0')
         i.fa.fa-info-circle
         | &nbspnothing to show
@@ -38,7 +38,7 @@
             ng-click='update_status(order.order_number, "delivered")')
               i.fa.fa-paper-plane
               | &nbsp Deliver
-  .col-sm-8.col-md-7
+  .col-sm-8.col-md-7.pane
     .section-title
       h3 details
       hr

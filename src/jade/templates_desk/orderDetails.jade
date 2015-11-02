@@ -1,108 +1,109 @@
 .text-center(ng-if='loading').p-t-lg
   i.fa.fa-spinner.fa-pulse.fa-3x
   .text-muted.p-t-md loading the order details, please wait
-.card(ng-if='!loading')
-  .card-block
-    button.pull-right.btn.btn-link.text-muted(ui-sref='^')
-      i.fa.fa-times.fa-lg
-    h2.card-title
-      | {{ details.order_number }}
-      small.text-muted &nbsp {{ details.timestamp.$date | date : "d MMM, yy H:mm" }}
-    h5
-      strong status:&nbsp
-      span(ng-class='"text-" + get_color(details.status)') {{ "order " + details.status | uppercase }}
+.content
+  .card(ng-if='!loading')
+    .card-block
+      button.pull-right.btn.btn-link.text-muted(ui-sref='^')
+        i.fa.fa-times.fa-lg
+      h2.card-title
+        | {{ details.order_number }}
+        small.text-muted &nbsp {{ details.timestamp.$date | date : "d MMM, yy H:mm" }}
+      h5
+        strong status:&nbsp
+        span(ng-class='"text-" + get_color(details.status)') {{ "order " + details.status | uppercase }}
 
-    .container-fluid.text-center(ng-if="details.status != 'delivered' && details.status != 'cancelled'").p-t-md
-      .row.process-block
-        fieldset.col-lg-3.col-md-4(ng-disabled='disable_buttons || details.status != "placed"')
-          button.btn.btn-success.btn-block(ng-click='update_status("accepted")')
-            i.fa.fa-check
-            | &nbsp Accept
-          button.btn.btn-secondary.btn-block(ng-click='update_status("cancelled")')
-            i.fa.fa-times
-            | &nbsp Cancel
-        .col-lg-1.hidden-md-down
-          i.fa.fa-caret-right.fa-3x
-        fieldset.col-md-4(ng-disabled='disable_buttons || details.status == "placed"')
-          button.btn.btn-success.btn-block(ng-disabled='details.status == "ready"' ng-click='update_status("ready")')
-            i.fa.fa-check
-            | &nbsp Ready
-          button.btn.btn-warning.btn-block(ng-disabled='details.status == "delayed" || details.status == "ready"' ng-click='update_status("delayed")')
-            i.fa.fa-exclamation
-            | &nbsp Delay
-        .col-lg-1.hidden-md-down
-          i.fa.fa-caret-right.fa-3x
-        fieldset.col-lg-3.col-md-4(ng-disabled='disable_buttons || details.status == "placed"')
-          button.btn.btn-primary.btn-block(ng-click='update_status("delivered")')
-            i.fa.fa-paper-plane
-            | &nbsp Deliver
-.card(ng-if='!loading')
-  .card-block
-    h4.card-title Order
+      .container-fluid.text-center(ng-if="details.status != 'delivered' && details.status != 'cancelled'").p-t-md
+        .row.process-block
+          fieldset.col-lg-3.col-md-4(ng-disabled='disable_buttons || details.status != "placed"')
+            button.btn.btn-success.btn-block(ng-click='update_status("accepted")')
+              i.fa.fa-check
+              | &nbsp Accept
+            button.btn.btn-secondary.btn-block(ng-click='update_status("cancelled")')
+              i.fa.fa-times
+              | &nbsp Cancel
+          .col-lg-1.hidden-md-down
+            i.fa.fa-caret-right.fa-3x
+          fieldset.col-md-4(ng-disabled='disable_buttons || details.status == "placed"')
+            button.btn.btn-success.btn-block(ng-disabled='details.status == "ready"' ng-click='update_status("ready")')
+              i.fa.fa-check
+              | &nbsp Ready
+            button.btn.btn-warning.btn-block(ng-disabled='details.status == "delayed" || details.status == "ready"' ng-click='update_status("delayed")')
+              i.fa.fa-exclamation
+              | &nbsp Delay
+          .col-lg-1.hidden-md-down
+            i.fa.fa-caret-right.fa-3x
+          fieldset.col-lg-3.col-md-4(ng-disabled='disable_buttons || details.status == "placed"')
+            button.btn.btn-primary.btn-block(ng-click='update_status("delivered")')
+              i.fa.fa-paper-plane
+              | &nbsp Deliver
+  .card(ng-if='!loading')
+    .card-block
+      h4.card-title Order
 
-    // Order table
-    table.table.table-sm
-      thead.thead-inverse
-        tr
-          th #
-          th Item
-          th Size/Option
-          th Price
-          th Qty
-          th Total
-      tbody
-        tr(ng-repeat-start='item in order')
-          th(scope="row") {{ $index + 1 }}
-          td {{ item.name }}
-          td {{ item.size }}
-          td {{ item.base_price | currency : "&#8377 "}}
-          td {{ item.quantity }}
-          td {{ item.sub_total | currency : "&#8377 "}}
-        tr(ng-repeat-end ng-repeat='sel in item.custom')
-          td
-          td --- {{ sel.name }}
-          td
-          td {{ sel.price | currency : "&#8377 "}}
-          td
-          td
-        tr
-          td(scope='row') *
-          td VAT (12.5% where applicable)
-          td
-          td
-          td
-          td {{ amount.tax | currency : "&#8377 "}}
-        tr(ng-if='amount.delivery_charges > 0')
-          th(scope="row") *
-          td Delivery charges
-          td
-          td
-          td
-          td {{ amount.delivery_charges | currency : "&#8377 "}}
-        tr.table-info
-          th
-          th Net Amount payable
-          th
-          th
-          th
-          th {{ amount.net_amount_payable | currency : "&#8377 "}}
+      // Order table
+      table.table.table-sm
+        thead.thead-inverse
+          tr
+            th #
+            th Item
+            th Size/Option
+            th Price
+            th Qty
+            th Total
+        tbody
+          tr(ng-repeat-start='item in order')
+            th(scope="row") {{ $index + 1 }}
+            td {{ item.name }}
+            td {{ item.size }}
+            td {{ item.base_price | currency : "&#8377 "}}
+            td {{ item.quantity }}
+            td {{ item.sub_total | currency : "&#8377 "}}
+          tr(ng-repeat-end ng-repeat='sel in item.custom')
+            td
+            td --- {{ sel.name }}
+            td
+            td {{ sel.price | currency : "&#8377 "}}
+            td
+            td
+          tr
+            td(scope='row') *
+            td VAT (12.5% where applicable)
+            td
+            td
+            td
+            td {{ amount.tax | currency : "&#8377 "}}
+          tr(ng-if='amount.delivery_charges > 0')
+            th(scope="row") *
+            td Delivery charges
+            td
+            td
+            td
+            td {{ amount.delivery_charges | currency : "&#8377 "}}
+          tr.table-info
+            th
+            th Net Amount payable
+            th
+            th
+            th
+            th {{ amount.net_amount_payable | currency : "&#8377 "}}
 
-.card.customer-info(ng-if='!loading')
-  .card-block
-    h4.card-title Customer Information
+  .card.customer-info(ng-if='!loading')
+    .card-block
+      h4.card-title Customer Information
 
-    div.p-x-lg
-      dl.dl-horizontal
-        dt.col-sm-3 Name:
-        dd.col-sm-9 {{ details.name }}
+      div.p-x-lg
+        dl.dl-horizontal
+          dt.col-sm-3 Name:
+          dd.col-sm-9 {{ details.name }}
 
-        dt.col-sm-3 Phone:
-        dd.col-sm-9
-          a(ng-href="tel: {{ details.phone }}") {{ details.phone }}
+          dt.col-sm-3 Phone:
+          dd.col-sm-9
+            a(ng-href="tel: {{ details.phone }}") {{ details.phone }}
 
-        dt.col-sm-3 Email:
-        dd.col-sm-9
-          a(ng-href="mailto:{{ details.email }}") {{ details.email }}
+          dt.col-sm-3 Email:
+          dd.col-sm-9
+            a(ng-href="mailto:{{ details.email }}") {{ details.email }}
 
-        dt.col-sm-3 Address:
-        dd.col-sm-9 {{ details.address }}
+          dt.col-sm-3 Address:
+          dd.col-sm-9 {{ details.address }}

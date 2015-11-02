@@ -1,9 +1,13 @@
-html, body, ui-view, .full-screen { height: 100% }
+html {
+  height: 86%;
+}
+body, ui-view, .full-screen { height: 100% }
 .card {
   background: url("../img/crossword.png") repeat;
 }
 
 body {
+  overflow: hidden;
   margin-top: 54px;
   background: url("../img/food.png") repeat;
   .container-fluid {
@@ -15,14 +19,13 @@ body {
   }
 }
 
-.order-list {
+.pane {
   height: 100%;
-  .order-list-content {
+  .content {
     height: 100%;
     overflow: auto;
   }
 }
-
 
 .section-title {
   padding-top: 20px;
