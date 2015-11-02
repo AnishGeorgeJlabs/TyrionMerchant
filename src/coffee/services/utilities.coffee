@@ -98,3 +98,21 @@ angular.module 'app.services'
       when 'delayed' then agColorCodes('warning')
       when 'delivered' then agColorCodes('primary')
 ])
+
+.factory('tyConfirm', ['$ionicPopup', '$window', '$q', ($ionicPopup, $window, $q) ->
+  if $window.isPhone
+    (message) ->
+      $ionicPopup.confirm({
+        title: "Confirm"
+        template: message
+        okType: 'button-clear button-small button-assertive'
+        okText: 'Yes'
+        cancelType: 'button-clear button-small'
+        cancelText: 'No'
+      })
+  else
+    (message) ->
+      $q( (resolve, reject) ->
+        resolve(confirm(message))
+      )
+])

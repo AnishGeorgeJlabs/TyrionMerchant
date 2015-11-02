@@ -54,8 +54,8 @@ angular.module 'app.services', []
       )
     }
 ])
-.factory('tyOrderOps', [ '$interval', '$rootScope', 'tyApiEndpoints', 'tyNotify', 'tyAudioAlert', 'agHttp',
-  ($interval, $rootScope, tyApiEndpoints, tyNotify, tyAudioAlert, agHttp) ->
+.factory('tyOrderOps', [ '$interval', '$rootScope', 'tyApiEndpoints', 'tyNotify', 'tyAudioAlert', 'agHttp', 'tyConfirm'
+  ($interval, $rootScope, tyApiEndpoints, tyNotify, tyAudioAlert, agHttp, tyConfirm) ->
     ###
       All the necessary operation on orders
     ###
@@ -99,9 +99,7 @@ angular.module 'app.services', []
     $rootScope.$on("$destroy", () ->
       $interval.cancel(repetition)
     )
-
-    return {
-    update_status: (order_number, status) ->
+    stat_update = (order_number, status) ->
       agHttp.post(tyApiEndpoints.status_update, {status: status, order_number: order_number})
       .then(
         (result) ->
@@ -114,6 +112,18 @@ angular.module 'app.services', []
         if reason
           tyNotify("update failed: #{JSON.stringify(reason)}")
       )
+
+    return {
+    update_status: (order_number, status) ->
+      if status == 'cancelled'
+        tyConfirm("Are you sure you want to cancel the order").then(
+          (res) ->
+            if res
+              stat_update(order_number, status)
+        )
+      else
+        stat_update(order_number, status)
+
     order_details: (order_number) ->
       agHttp.get(tyApiEndpoints.order_details, {order_number: order_number})
 
