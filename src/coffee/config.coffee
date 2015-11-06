@@ -1,4 +1,4 @@
-angular.module 'app.config', ['app.services']
+angular.module 'app.config', ['app.services', 'app.controllers']
 .config([ '$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', 'tyApiEndpointsProvider',
   ($stateProvider, $urlRouterProvider, $ionicConfigProvider, tyApiEndpointsProvider) ->
     $ionicConfigProvider.tabs.position('bottom')
@@ -12,11 +12,15 @@ angular.module 'app.config', ['app.services']
       abstract: true
       templateUrl: base_dir + 'tabsController.html'
     )
-
     .state('login',
       url: '/login'
       templateUrl: base_dir + 'login.html'
-      controller: 'loginCtrl'
+      controller: 'LoginCtrl'
+    )
+    .state('changePass',
+      url: '/change_pass'
+      templateUrl: base_dir + 'changePass.html'
+      controller: 'ChangePassCtrl'
     )
 
     .state('tabs.new',

@@ -1,5 +1,5 @@
-angular.module 'app.controllers', []
-.controller('loginCtrl', [ '$scope', '$state', 'tyUserCreds', 'tyNotify',
+angular.module 'app.controllers'
+.controller('LoginCtrl', [ '$scope', '$state', 'tyUserCreds', 'tyNotify',
   ($scope, $state, tyUserCreds, tyNotify) ->
     $scope.data =
       username: ''

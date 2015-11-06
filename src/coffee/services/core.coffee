@@ -19,6 +19,7 @@ angular.module 'app.services', []
     return {
     echo: host
     login: host + "login"
+    change_pass: host + "change_pass"
     menu: host + "menu"
     order_list: host + "order_list"
     order_details: host + "order_data"
@@ -52,6 +53,15 @@ angular.module 'app.services', []
         broad = {name: data.name, address: data.address}
         $rootScope.$emit("app:logged_in", broad)
         username
+      )
+    change_pass: (user, old_pass, new_pass) ->
+      real_old_pass = agEncPass(old_pass)
+      real_new_pass = agEncPass(new_pass)
+
+      agHttp.post(tyApiEndpoints.change_pass,
+        username: user
+        old_pass: real_old_pass
+        new_pass: real_new_pass
       )
     }
 ])

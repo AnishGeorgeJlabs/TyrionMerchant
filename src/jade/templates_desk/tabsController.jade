@@ -21,6 +21,9 @@ nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
           a.dropdown-item(ng-click='logout()')
             i.fa.fa-fw.fa-sign-out
             | &nbspLogout
+          a.dropdown-item(ui-sref='changePass')
+            i.fa.fa-fw.fa-cog
+            | &nbspChange password
       li.nav-item
         a.nav-link(ng-click='toggle_mute()')
           i.fa.fa-fw(ng-class="is_mute()?'fa-volume-off': 'fa-volume-up'")

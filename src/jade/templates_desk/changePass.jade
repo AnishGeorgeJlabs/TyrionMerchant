@@ -23,7 +23,7 @@
           .form-group.row
             .col-xs-offset-4.col-xs-4
               .btn-group
-                button.btn.btn-secondary-outline(ng-disabled='loading' ng-click='cancel()') Submit
+                a.btn.btn-secondary-outline(ng-disabled='loading' ng-click='cancel()') Cancel
                 button.btn.btn-primary-outline(type='submit' ng-disabled='loading') Submit
     .text-center(ng-if='loading')
       i.fa.fa-spinner.fa-pulse.fa-3x

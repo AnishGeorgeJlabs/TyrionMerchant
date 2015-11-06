@@ -1,4 +1,4 @@
-ion-view(title="Login")
+ion-view(title="Change password" cache-view='false')
   ion-content(padding='true').has-header
     form(ng-submit='submit()').list
       ion-list
@@ -12,11 +12,11 @@ ion-view(title="Login")
           span.input-label New password
           input(type='password' ng-model='data.new_pass' required)
         label.item.item-input
-          span.input-label Repeat password
+          span.input-label Confirm
           input(type='password' ng-model='data.new_pass_r' required)
       #loginPageSpacer.spacer
       .button-bar
-        button.button.button-positive(ng-disabled='loading' ng-click='cancel()') Cancel
-        button.button.button-stable(type='submit' ng-disabled='loading') Submit
+        a.button.button-stable(ng-disabled='loading' ng-click='cancel()') Cancel
+        button.button.button-positive(type='submit' ng-disabled='loading') Submit
     .text-center
       ion-spinner(ng-if='loading' icon='lines')
