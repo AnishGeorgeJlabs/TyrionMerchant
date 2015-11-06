@@ -1,0 +1,32 @@
+.row.p-t-lg
+  .col-xs-12.col-md-offset-1.col-md-10.col-lg-offset-3.col-lg-6
+    .card.text-center
+      .card-block
+        h4.card-title Change password
+        form(ng-submit='submit()')
+          .form-group.row
+            label.form-control-label.col-xs-4.text-right Username
+            .col-xs-8
+              input(type='text' ng-model='data.username' readonly required).form-control
+          .form-group.row
+            label.form-control-label.col-xs-4.text-right Old password
+            .col-xs-8
+              input(type='password' ng-model='data.old_pass' required).form-control
+          .form-group.row
+            label.form-control-label.col-xs-4.text-right New password
+            .col-xs-8
+              input(type='password' ng-model='data.new_pass' required).form-control
+          .form-group.row
+            label.form-control-label.col-xs-4.text-right Repeat password
+            .col-xs-8
+              input(type='password' ng-model='data.new_pass_r' required).form-control
+          .form-group.row
+            .col-xs-offset-4.col-xs-4
+              .btn-group
+                button.btn.btn-secondary-outline(ng-disabled='loading' ng-click='cancel()') Submit
+                button.btn.btn-primary-outline(type='submit' ng-disabled='loading') Submit
+    .text-center(ng-if='loading')
+      i.fa.fa-spinner.fa-pulse.fa-3x
+
+
+

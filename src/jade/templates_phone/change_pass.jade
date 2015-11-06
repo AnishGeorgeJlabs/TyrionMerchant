@@ -1,0 +1,22 @@
+ion-view(title="Login")
+  ion-content(padding='true').has-header
+    form(ng-submit='submit()').list
+      ion-list
+        label.item.item-input
+          span.input-label Username
+          input(type='text' ng-model='data.username' readonly required)
+        label.item.item-input
+          span.input-label Old password
+          input(type='password' ng-model='data.old_pass' required)
+        label.item.item-input
+          span.input-label New password
+          input(type='password' ng-model='data.new_pass' required)
+        label.item.item-input
+          span.input-label Repeat password
+          input(type='password' ng-model='data.new_pass_r' required)
+      #loginPageSpacer.spacer
+      .button-bar
+        button.button.button-positive(ng-disabled='loading' ng-click='cancel()') Cancel
+        button.button.button-stable(type='submit' ng-disabled='loading') Submit
+    .text-center
+      ion-spinner(ng-if='loading' icon='lines')
