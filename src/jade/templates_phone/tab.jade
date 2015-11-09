@@ -17,16 +17,16 @@ ion-view(title='{{ config.tab + " orders" }}')
           ng-class='get_color(order.status)'
           )
             | {{ order.status | uppercase }}
-          span {{ order.order_number }}
+          span {{:: order.order_number }}
         .item.item-text-wrap.item-button-right
           strong area: &nbsp
-          span.royal {{ order.area | uppercase}}
+          span.royal {{:: order.area | uppercase}}
           br
           strong amount: &nbsp
-          span {{ order.total | currency : "&#8377 " }}
+          span {{:: order.total | currency : "&#8377 " }}
           br
           strong time: &nbsp
-          span {{ order.timestamp.$date | date : "d MMM, yy hh:mm a" }}
+          span {{:: order.timestamp.$date | date : "d MMM, yy hh:mm a" }}
           button.button.button-stable.button-clear.padding-top(ui-sref='{{"tabs."+config.tab+"-details"}}({ order_number: order.order_number })')
             span details &nbsp
             i.icon.ion-arrow-right-b

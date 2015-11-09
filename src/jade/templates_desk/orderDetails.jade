@@ -7,8 +7,8 @@
       button.pull-right.btn.btn-link.text-muted(ui-sref='^')
         i.fa.fa-times.fa-lg
       h2.card-title
-        | {{ details.order_number }}
-        small.text-muted &nbsp {{ details.timestamp.$date | date : "d MMM, yy hh:mm a" }}
+        | {{:: details.order_number }}
+        small.text-muted &nbsp {{:: details.timestamp.$date | date : "d MMM, yy hh:mm a" }}
       h5
         strong status:&nbsp
         span(ng-class='"text-" + get_color(details.status)') {{ "order " + details.status | uppercase }}
@@ -53,17 +53,17 @@
             th Total
         tbody
           tr(ng-repeat-start='item in order')
-            th(scope="row") {{ $index + 1 }}
-            td {{ item.name }}
-            td {{ item.size }}
-            td {{ item.base_price | currency : "&#8377 "}}
-            td {{ item.quantity }}
-            td {{ item.sub_total | currency : "&#8377 "}}
+            th(scope="row") {{:: $index + 1 }}
+            td {{:: item.name }}
+            td {{:: item.size }}
+            td {{:: item.base_price | currency : "&#8377 "}}
+            td {{:: item.quantity }}
+            td {{:: item.sub_total | currency : "&#8377 "}}
           tr(ng-repeat-end ng-repeat='sel in item.custom')
             td
-            td --- {{ sel.name }}
+            td --- {{:: sel.name }}
             td
-            td {{ sel.price | currency : "&#8377 "}}
+            td {{:: sel.price | currency : "&#8377 "}}
             td
             td
           tr
@@ -72,21 +72,21 @@
             td
             td
             td
-            td {{ amount.tax | currency : "&#8377 "}}
+            td {{:: amount.tax | currency : "&#8377 "}}
           tr(ng-if='amount.delivery_charges > 0')
             th(scope="row") *
             td Delivery charges
             td
             td
             td
-            td {{ amount.delivery_charges | currency : "&#8377 "}}
+            td {{:: amount.delivery_charges | currency : "&#8377 "}}
           tr.table-info
             th
             th Net Amount payable
             th
             th
             th
-            th {{ amount.net_amount_payable | currency : "&#8377 "}}
+            th {{:: amount.net_amount_payable | currency : "&#8377 "}}
 
   .card.customer-info(ng-if='!loading')
     .card-block
@@ -95,15 +95,15 @@
       div.p-x-lg
         dl.dl-horizontal
           dt.col-sm-3 Name:
-          dd.col-sm-9 {{ details.name }}
+          dd.col-sm-9 {{:: details.name }}
 
           dt.col-sm-3 Phone:
           dd.col-sm-9
-            a(ng-href="tel: {{ details.phone }}") {{ details.phone }}
+            a(ng-href="tel: {{:: details.phone }}") {{:: details.phone }}
 
           dt.col-sm-3 Email:
           dd.col-sm-9
-            a(ng-href="mailto:{{ details.email }}") {{ details.email }}
+            a(ng-href="mailto:{{:: details.email }}") {{:: details.email }}
 
           dt.col-sm-3 Address:
-          dd.col-sm-9 {{ details.address }}
+          dd.col-sm-9 {{:: details.address }}

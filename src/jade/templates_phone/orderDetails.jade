@@ -8,8 +8,8 @@ ion-view(title='Order details' cache-view="false")
     .list(ng-if='!loading')
       // Order header
       .item.item-divider
-        .pull-right.calm.text-small {{ details.timestamp.$date | date : "d MMM, yy H:mm" }}
-        | {{ details.order_number }}
+        .pull-right.calm.text-small {{:: details.timestamp.$date | date : "d MMM, yy H:mm" }}
+        | {{:: details.order_number }}
       .item.text-center
         strong status: &nbsp
         span(ng-class='get_color(details.status)') {{ "order " + details.status | uppercase }}
@@ -35,37 +35,37 @@ ion-view(title='Order details' cache-view="false")
       .item.item-divider.text-center Order
 
       .item(ng-repeat-start="item in order")
-        span.quantity {{ item.quantity }}x
-        span.badge {{ item.base_price | currency : "&#8377 " }}
-        span {{ item.name }}
-        span(ng-if='item.size') : {{ item.size }}
+        span.quantity {{:: item.quantity }}x
+        span.badge {{:: item.base_price | currency : "&#8377 " }}
+        span {{:: item.name }}
+        span(ng-if='item.size') : {{:: item.size }}
       .item(ng-repeat-end ng-repeat='sel in item.custom').customization
-        span.badge {{ sel.price | currency : "&#8377 " }}
+        span.badge {{:: sel.price | currency : "&#8377 " }}
         .customization-selection
-          | {{ sel.name }}
+          | {{:: sel.name }}
       .item
-        span.badge {{ amount.tax | currency : "&#8377 "}}
+        span.badge {{:: amount.tax | currency : "&#8377 "}}
         span VAT (where applicable)
       .item(ng-if='amount.delivery_charges > 0')
-        span.badge {{ amount.delivery_charges | currency : "&#8377 "}}
+        span.badge {{:: amount.delivery_charges | currency : "&#8377 "}}
         span Delivery charges
       .item.positive-bg.light
-        span.badge.badge-dark {{ amount.net_amount_payable | currency : "&#8377 "}}
+        span.badge.badge-dark {{:: amount.net_amount_payable | currency : "&#8377 "}}
         span Net Amount payable
 
 
       .item.item-divider.text-center Customer Information
       .item.item-icon-left.item-text-wrap
         i.icon.ion-person
-        | {{ details.name }}
+        | {{:: details.name }}
       .item.item-icon-left
-        a(ng-href='tel:{{details.phone}}').balanced
+        a(ng-href='tel:{{::details.phone}}').balanced
           i.icon.ion-ios-telephone
-          | {{ details.phone }}
+          | {{:: details.phone }}
       .item.item-icon-left
-        a(ng-href='mailto:{{details.email}}').positive
+        a(ng-href='mailto:{{::details.email}}').positive
           i.icon.ion-email
-          | {{ details.email }}
+          | {{:: details.email }}
       .item.item-icon-left.item-text-wrap
         i.icon.ion-ios-home
-        | {{ details.address }}
+        | {{:: details.address }}
