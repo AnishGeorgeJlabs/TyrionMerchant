@@ -46,7 +46,7 @@
       h3 details
       hr
     ui-view
-    .text-center.text-muted(ng-if='stateCheck("tabs.new") || stateCheck("tabs.current") || stateCheck("tabs.past")')
+    .text-center.text-muted(ng-if='!(stateCheck("tabs.new.details") || stateCheck("tabs.current.details") || stateCheck("tabs.past.details"))')
       i.fa.fa-chevron-left.fa-2x
       br
       | &nbspplease select an order from the list
