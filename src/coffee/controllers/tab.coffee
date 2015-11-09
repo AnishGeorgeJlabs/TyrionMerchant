@@ -23,5 +23,6 @@ angular.module('app.controllers')
       $scope.orders = data
     )
 
-    $scope.update_status = tyOrderOps.update_status
+    $scope.update_status = (order_number, status) ->
+      tyOrderOps.update_status(order_number, status, $scope.config.tab == "new")
 ])

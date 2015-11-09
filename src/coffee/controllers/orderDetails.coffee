@@ -28,7 +28,7 @@ angular.module 'app.controllers'
 
     $scope.update_status = (status) ->
       $scope.disable_buttons = true
-      tyOrderOps.update_status($scope.details.order_number, status)
+      tyOrderOps.update_status($scope.details.order_number, status, $scope.details.status == "placed")
       .then(
         () ->
           get_details()
