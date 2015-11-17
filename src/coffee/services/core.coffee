@@ -1,4 +1,4 @@
-angular.module 'app.services', []
+angular.module 'app.services'
 .provider('tyApiEndpoints', () ->
   ###
     This service provides for all the api endpoints for tyrion,

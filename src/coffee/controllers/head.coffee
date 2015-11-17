@@ -1,4 +1,4 @@
-angular.module('app.controllers', [])
+angular.module('app.controllers')
 .controller('HeadCtrl', ['$scope', '$log', '$window',
     ($scope, $log, $window) ->
 

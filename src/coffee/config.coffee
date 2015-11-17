@@ -1,4 +1,4 @@
-angular.module 'app.config', ['app.services', 'app.controllers']
+angular.module 'app'
 .config([ '$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', 'tyApiEndpointsProvider',
   ($stateProvider, $urlRouterProvider, $ionicConfigProvider, tyApiEndpointsProvider) ->
     $ionicConfigProvider.tabs.position('bottom')

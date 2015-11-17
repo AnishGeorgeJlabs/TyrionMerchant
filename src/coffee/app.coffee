@@ -14,8 +14,7 @@ else
 
 window.template_dir = if window.isPhone then "templates_phone/" else "templates_desk/"
 
-angular.module 'app', ['ionic', 'ngCordova', 'ngAudio',
-                       'app.controllers', 'app.config', 'app.services']
+angular.module 'app', ['ionic', 'ngCordova', 'ngAudio', 'app.controllers', 'app.services']
 .run([ '$ionicPlatform', '$ionicPopup', '$state', '$log', '$window', '$ionicHistory', 'tyAudioAlert',
   ($ionicPlatform, $ionicPopup, $state, $log, $window, $ionicHistory, tyAudioAlert) ->
     $ionicPlatform.ready(() ->
@@ -65,3 +64,6 @@ angular.module 'app', ['ionic', 'ngCordova', 'ngAudio',
           hideMethod: "fadeOut"
     )
 ])
+
+angular.module('app.controllers',[])
+angular.module('app.services', [])

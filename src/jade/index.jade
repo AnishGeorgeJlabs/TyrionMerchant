@@ -6,7 +6,7 @@ html(ng-app='app')
          content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"
          )
     meta(http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:35729")
-    title Tyrion Merchants
+    title Jlabs Vendor Portal
 
     script(ng-if='!isPhone' src='lib/jquery/dist/jquery.min.js')
 
@@ -22,21 +22,7 @@ html(ng-app='app')
     link(ng-href='{{::sheet}}' rel='stylesheet' ng-repeat='sheet in style_sheets')
 
     // Other app javascript here in a minute
-    - var coreJs = ['app', 'config']
-    each file in coreJs
-      script(src='js/'+file+'.js')
-
-    - var controllers = ['head', 'login', 'changePass', 'orderDetails', 'tab']
-    each file in controllers
-      script(src='js/controllers/'+file+'.js')
-
-    - var services = ['core', 'utilities']
-    each file in services
-      script(src='js/services/'+file+'.js')
-
-    - var directives = []
-    each file in directives
-      script(src='js/directives/'+file+'.js')
+    script(src='js/application.min.js')
 
   body(animation="slide-left-right-ios7" ng-controller='DeviceCtrl')
     div(ng-if='isPhone')
