@@ -1,6 +1,10 @@
-angular.module('app.controllers', [])
+angular.module('app.controllers')
 .controller('HeadCtrl', ['$scope', '$log', '$window',
     ($scope, $log, $window) ->
+      ###
+      # Works on the document <head>
+      # Contains dynamic scripts and stylesheets
+      ###
 
       if $window.isPhone
         $scope.style_sheets = ["css/ionic.app.min.css"]
@@ -19,6 +23,10 @@ angular.module('app.controllers', [])
 .controller('DeviceCtrl', ['$scope', '$state', '$rootScope', '$window',
                            'tyColors', 'tyOrderOps', 'tyUserCreds', 'tyNotify', 'tyAudioAlert',
     ($scope, $state, $rootScope, $window, tyColors, tyOrderOps, tyUserCreds, tyNotify, tyAudioAlert) ->
+      ###
+      # This is probably a master controller
+      # Attached to <body>
+      ###
 
       # ----------- Service functions --------------------------- #
       $scope.isPhone = $window.isPhone    # template function to check if phone

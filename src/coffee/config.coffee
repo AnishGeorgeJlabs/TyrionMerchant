@@ -1,7 +1,11 @@
-angular.module 'app.config', ['app.services', 'app.controllers']
+angular.module 'app'
 .config([ '$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', 'tyApiEndpointsProvider',
   ($stateProvider, $urlRouterProvider, $ionicConfigProvider, tyApiEndpointsProvider) ->
+
+    # --- Set tabs at the bottom of the screen
     $ionicConfigProvider.tabs.position('bottom')
+    
+    # --- For development, use local host where your tyrion dev server is running
     tyApiEndpointsProvider.useLocalHost(false)
 
     base_dir = window.template_dir

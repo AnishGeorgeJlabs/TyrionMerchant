@@ -1,6 +1,9 @@
 angular.module 'app.controllers'
 .controller('ChangePassCtrl', ['$scope', '$state', 'tyUserCreds', 'tyNotify',
   ($scope, $state, tyUserCreds, tyNotify) ->
+    ###
+    # As expected, this controller handles the password change page
+    ###
     if not tyUserCreds.isLoggedIn()
       $state.go('login')
     $scope.data =
