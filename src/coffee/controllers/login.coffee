@@ -1,6 +1,9 @@
 angular.module 'app.controllers'
 .controller('LoginCtrl', [ '$scope', '$state', 'tyUserCreds', 'tyNotify',
   ($scope, $state, tyUserCreds, tyNotify) ->
+    ###
+    # It's a no brainer, this one about the login page
+    ###
     $scope.data =
       username: ''
       password: ''

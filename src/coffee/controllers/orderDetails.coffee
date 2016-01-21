@@ -1,6 +1,9 @@
 angular.module 'app.controllers'
 .controller('orderDetailsCtrl', [ '$scope', '$state', '$stateParams', '$log', 'tyOrderOps', 'tyNotify', 'tyUserCreds',
   ($scope, $state, $stateParams, $log, tyOrderOps, tyNotify, tyUserCreds) ->
+    ###
+    # For the order details page
+    ###
     if not tyUserCreds.isLoggedIn()
       $state.go('login')
     $scope.loading = true

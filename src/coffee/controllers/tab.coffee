@@ -1,6 +1,9 @@
 angular.module('app.controllers')
 .controller('TabCtrl', ['$scope', '$state', '$stateParams', 'tyOrderOps', 'tyUserCreds',
   ($scope, $state, $stateParams, tyOrderOps, tyUserCreds) ->
+    ###
+    # Main controller for each tab
+    ###
     if not tyUserCreds.isLoggedIn()
       $state.go('login')
 

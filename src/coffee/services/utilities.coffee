@@ -1,10 +1,16 @@
 angular.module 'app.services'
 .factory('agEncPass', () ->
+  # Simple service to encrypt password, we are using md5 as of now
   (password) ->
     CryptoJS.MD5(password).toString(CryptoJS.enc.Hex)
 )
 .factory('agHttp', ['$http', '$q', 'tyNotify',
   ($http, $q, tyNotify) ->
+    ###
+    # Wrapper over the $http service, will be used accross the application
+    # This will be responsible for security, which arguably is quite poor right now
+    # Receives and then injects the api_key and vendor_id into every request
+    ###
     apiCreds = {
       api_key: ''
       vendor_id: 0
@@ -46,6 +52,12 @@ angular.module 'app.services'
 ])
 
 .provider('tyNotify', () ->
+  ###
+  # Hybrid service for notification
+  # If on web, uses the toastr plugin
+  # Else if on phone, uses ionicPopup
+  # Else if installed on phone, uses $cordovaToast
+  ###
   if window.isPhone
     res = ['$cordovaToast', '$ionicPopup', '$timeout', ($cordovaToast, $ionicPopup, $timeout) ->
       (message, style) ->
@@ -72,6 +84,9 @@ angular.module 'app.services'
 )
 
 .provider('agColorCodes', () ->
+  ###
+  # Setup color codes for ionic or bootstrap
+  ###
   if window.isPhone
     colors =
       primary: 'positive'
@@ -90,6 +105,7 @@ angular.module 'app.services'
 )
 
 .factory('tyColors', ['agColorCodes', (agColorCodes) ->
+  # Setup color codes for the given order status
   (status) ->
     switch status
       when 'placed' then ''
@@ -100,6 +116,9 @@ angular.module 'app.services'
 ])
 
 .factory('tyConfirm', ['$ionicPopup', '$window', '$q', ($ionicPopup, $window, $q) ->
+  ###
+  # Hybrid service to show correct style of confirmation box. You know the drill
+  ###
   if $window.isPhone
     (message) ->
       $ionicPopup.confirm({

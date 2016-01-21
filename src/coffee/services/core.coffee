@@ -71,7 +71,7 @@ angular.module 'app.services'
         All the necessary operation on orders
       ###
 
-# --------------- Private data ----------------- #
+      # --------------- Private data ----------------- #
       data = {
         new: []
         current: []
@@ -165,6 +165,12 @@ angular.module 'app.services'
   ])
 
 .factory('tyAudioAlert', ['ngAudio', '$cordovaMedia', '$rootScope', (ngAudio, $cordovaMedia, $rootScope) ->
+    ###
+    # Hybrid function to provide the audio alert service
+    # Simple functions like play and stop and toggle_mute
+    # Also, additional function to change over to cordova audio when the device is ready in case we are
+    #   installing to android
+    ###
     cordova = false
     audio = ngAudio.load("sound/ringer.mp3")
     audio.loop = true

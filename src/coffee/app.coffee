@@ -12,6 +12,7 @@ else
   window.isPhone = false
   window.isTablet = false
 
+# ---- Select the template directory according to platform
 window.template_dir = if window.isPhone then "templates_phone/" else "templates_desk/"
 
 angular.module 'app', ['ionic', 'ngCordova', 'ngAudio', 'app.controllers', 'app.services']
@@ -27,6 +28,7 @@ angular.module 'app', ['ionic', 'ngCordova', 'ngAudio', 'app.controllers', 'app.
       if window.cordova
         tyAudioAlert.change_to_cordova()
 
+      # ---- Setup the back button
       $ionicPlatform.registerBackButtonAction(() ->
         if $state.is('tabs.new') || $state.is('login')
           $ionicPopup.confirm(
@@ -47,6 +49,7 @@ angular.module 'app', ['ionic', 'ngCordova', 'ngAudio', 'app.controllers', 'app.
           $ionicHistory.goBack()
       , 100)
 
+      # ---- Setup the toastr module which provides toast notifications for desktop
       if $window.toastr
         $window.toastr.options =
           closeButton: false
@@ -65,5 +68,6 @@ angular.module 'app', ['ionic', 'ngCordova', 'ngAudio', 'app.controllers', 'app.
     )
 ])
 
+# --------- Initialize all modules so that concatenation of js files work flawlessly
 angular.module('app.controllers',[])
 angular.module('app.services', [])
