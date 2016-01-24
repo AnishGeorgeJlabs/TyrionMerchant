@@ -18,12 +18,12 @@ angular.module 'app.services'
   $get: () ->
     return {
     echo: host
-    login: host + "login"
-    change_pass: host + "change_pass"
+    login: host + "vendor/login"
+    change_pass: host + "vendor/change_pass"
     menu: host + "menu"
-    order_list: host + "order_list"
-    order_details: host + "order_data"
-    status_update: host + "order_data/update_status"
+    order_list: host + "vendor/order_list"
+    order_details: host + "vendor/order_data"
+    status_update: host + "vendor/order_data/update_status"
     }
 )
 
